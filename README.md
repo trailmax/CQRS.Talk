@@ -1,0 +1,2 @@
+# CQRS.Talk
+CQRS.Talk
