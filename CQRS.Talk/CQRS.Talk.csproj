@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>RECS0145</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -45,9 +46,10 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sample1.SeparateReadsFromWrites\Alltogether.cs" />
-    <Compile Include="Sample1.SeparateReadsFromWrites\Separate.cs" />
+    <Compile Include="Sample1.SeparateReadsFromWrites\Bad.cs" />
+    <Compile Include="Sample1.SeparateReadsFromWrites\Good.cs" />
     <Compile Include="Extra\01.CaseOfPlusPlus\PlusPlus.cs" />
+    <Compile Include="Sample2.BasicSQRS\AttributeChecker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

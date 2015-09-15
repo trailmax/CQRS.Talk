@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace CQRS.Talk.Sample1
 {
@@ -14,7 +11,7 @@ namespace CQRS.Talk.Sample1
     public class Separate
     {
         // Query
-        public bool IsAttributeExist(String attributeName)
+        public bool AttributeExists(String attributeName)
         {
             // need implementation
             return true;
@@ -31,7 +28,7 @@ namespace CQRS.Talk.Sample1
         public void Consumer()
         {
             // Now here there is no ambiguity when reading
-            if (IsAttributeExist("href"))
+            if (AttributeExists("href"))
             {
                 SetAttribute("href", "https://localhost:4300");
             }
