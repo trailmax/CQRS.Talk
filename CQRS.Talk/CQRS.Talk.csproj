@@ -53,7 +53,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Sample3.SelectQueries\Denormalised.sql" />
     <Content Include="Sample3.SelectQueries\ReadFromModel.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

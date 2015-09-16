@@ -1,5 +1,4 @@
 ﻿
-
 select 	*
 from people p
     inner join JOBDETAIL jd on p.people_id = jd.people_id
@@ -11,3 +10,9 @@ where p.[status]='Active'
     and jd.principaljob='T'
     and jd.CURRENTRECORD='YES'
     and post.[Type] = 'Operational'
+
+
+
+
+select * from PersonnelContractsReport
+
