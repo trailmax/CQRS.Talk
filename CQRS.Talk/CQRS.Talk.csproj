@@ -37,13 +37,18 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dependencies\MyDbContext.cs" />
+    <Compile Include="Dependencies\Person.cs" />
+    <Compile Include="Dependencies\PetaPoco.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Refactoring.Queries\PeopleRepository.cs" />
     <Compile Include="Sample1.SeparateReadsFromWrites\Bad.cs" />
     <Compile Include="Sample1.SeparateReadsFromWrites\Good.cs" />
     <Compile Include="Extra\01.CaseOfPlusPlus\PlusPlus.cs" />
