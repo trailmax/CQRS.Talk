@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CQRS.Talk.Dependencies;
 using CQRS.Talk.Refactoring1.Queries.Step5.Mediator;
 using CQRS.Talk.Refactoring2.Commands._4.Validators;
