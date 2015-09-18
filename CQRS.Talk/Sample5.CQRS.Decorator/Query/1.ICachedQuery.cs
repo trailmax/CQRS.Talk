@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace CQRS.Talk.Sample5.CQRS.Decorator.Query
 {
@@ -11,5 +8,4 @@ namespace CQRS.Talk.Sample5.CQRS.Decorator.Query
         String CacheKey { get; }
         TimeSpan CacheDuration { get; }
     }
-
 }

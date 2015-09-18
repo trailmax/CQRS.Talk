@@ -15,7 +15,7 @@ namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
 
     public interface IQueryHandler<TQuery, TResult> where TQuery : IQuery<TResult>
     {
-        TResult Request(IQuery<TResult> query);
+        TResult Handle(IQuery<TResult> query);
     }
 
 #endregion
@@ -25,7 +25,7 @@ namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
 
     public interface IMediator
     {
-        TResult Request<TResult>(IQuery<TResult> query);
+        TResult Handle<TResult>(IQuery<TResult> query);
     }
 
 
@@ -39,7 +39,7 @@ namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
         }
 
 
-        public TResult Request<TResult>(IQuery<TResult> query)
+        public TResult Handle<TResult>(IQuery<TResult> query)
         {
             var handlerType =
                 typeof(IQueryHandler<,>).MakeGenericType(query.GetType(), typeof(TResult));

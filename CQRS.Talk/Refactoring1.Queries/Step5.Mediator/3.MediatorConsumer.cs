@@ -14,7 +14,7 @@ namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
     }
     public class StaffWithLengthOfServiceQueryHandler : IQueryHandler<StaffWithLengthOfServiceQuery, IEnumerable<Person>>
     {
-        public IEnumerable<Person> Request(IQuery<IEnumerable<Person>> query)
+        public IEnumerable<Person> Handle(IQuery<IEnumerable<Person>> query)
         {
             throw new NotImplementedException();
         }
@@ -28,7 +28,7 @@ namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
     }
     public class FindPersonByEmailQueryHandler : IQueryHandler<FindPersonByEmailQuery, Person>
     {
-        public Person Request(IQuery<Person> query)
+        public Person Handle(IQuery<Person> query)
         {
             throw new NotImplementedException();
         }
@@ -49,7 +49,7 @@ namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
 
         public ActionResult EligibleForReview()
         {
-            var people = mediator.Request(new StaffWithLengthOfServiceQuery());
+            var people = mediator.Handle(new StaffWithLengthOfServiceQuery());
 
             return View(people);
         }
@@ -59,7 +59,7 @@ namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
         {
             var query = new FindPersonByEmailQuery() { Email = email, IsCurrentlyEmployed = true };
             Person person =
-                mediator.Request(query);
+                mediator.Handle(query);
 
             return View(person);
         }

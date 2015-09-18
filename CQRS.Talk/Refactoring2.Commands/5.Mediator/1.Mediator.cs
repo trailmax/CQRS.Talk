@@ -11,7 +11,7 @@ namespace CQRS.Talk.Refactoring2.Commands._5.Mediator
 {
     public interface IMediator
     {
-        TResult Request<TResult>(IQuery<TResult> query);
+        TResult Handle<TResult>(IQuery<TResult> query);
         List<String> ProcessCommand<TCommand>(TCommand command) where TCommand : ICommand;
     }
 
@@ -26,7 +26,7 @@ namespace CQRS.Talk.Refactoring2.Commands._5.Mediator
         }
 
 
-        public TResult Request<TResult>(IQuery<TResult> query)
+        public TResult Handle<TResult>(IQuery<TResult> query)
         {
             var handlerType =
                 typeof(IQueryHandler<,>).MakeGenericType(query.GetType(), typeof(TResult));

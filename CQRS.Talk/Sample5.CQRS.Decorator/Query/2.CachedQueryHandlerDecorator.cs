@@ -17,14 +17,14 @@ namespace CQRS.Talk.Sample5.CQRS.Decorator.Query
         }
 
 
-        public TResult Request(IQuery<TResult> query)
+        public TResult Handle(IQuery<TResult> query)
         {
             var cachedQuery = query as ICachedQuery;
 
             if (cachedQuery == null)
             {
                 // query is not cached - just executed the actual query handler
-                return decorated.Request(query);
+                return decorated.Handle(query);
             }
 
             var cacheKey = cachedQuery.CacheKey;
@@ -38,7 +38,7 @@ namespace CQRS.Talk.Sample5.CQRS.Decorator.Query
             // cache contains nothing for this key
 
             // requrest actual query handler for the query results
-            var cachedResult = decorated.Request(query);
+            var cachedResult = decorated.Handle(query);
 
             // save the result into cache
             cacheProvider.Set(cachedQuery.CacheKey, cachedResult, cachedQuery.CacheDuration);
