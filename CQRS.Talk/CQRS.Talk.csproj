@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -69,6 +73,7 @@
     <Compile Include="Sample1.SeparateReadsFromWrites\Good.cs" />
     <Compile Include="Extra\01.CaseOfPlusPlus\PlusPlus.cs" />
     <Compile Include="Sample2.BasicSQRS\AttributeChecker.cs" />
+    <Compile Include="Sample4.Decorator\3.ConsumerFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -79,11 +84,16 @@
     <Compile Include="Refactoring2.Commands\3.Interfaces\1.Interfaces.cs" />
     <Compile Include="Refactoring2.Commands\3.Interfaces\3.Consumer.cs" />
     <Compile Include="Refactoring2.Commands\4.Validators\1.Validators.cs" />
+    <Compile Include="Sample4.Decorator\1.Service.cs" />
+    <Compile Include="Sample4.Decorator\2.Decorator.cs" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Sample3.SelectQueries\ReadFromModel.sql" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
