@@ -29,8 +29,8 @@ namespace CQRS.Talk.Sample5.CQRS.Decorator
         public static ICommandHandler<DelayedTimerCommand> CreateHandler()
         {
             var commandHandler = new DelayedTimerCommandHanlder();
-            var timedDecorator = new TimedCommandHandlerDecorator<DelayedTimerCommand>(commandHandler);
-            var loggedDecorator = new LoggedCommandHandlerDecorator<DelayedTimerCommand>(timedDecorator);
+            var timedDecorator = new TimedDecorator<DelayedTimerCommand>(commandHandler);
+            var loggedDecorator = new LoggedDecorator<DelayedTimerCommand>(timedDecorator);
 
             return loggedDecorator;
         }
@@ -43,7 +43,8 @@ namespace CQRS.Talk.Sample5.CQRS.Decorator
         public void Execute()
         {
             var command = new DelayedTimerCommand(1234);
-            ICommandHandler<DelayedTimerCommand> commandHandler = CommandHandlerFactory.CreateHandler();
+            ICommandHandler<DelayedTimerCommand> commandHandler = 
+                CommandHandlerFactory.CreateHandler();
 
             commandHandler.Handle(command);
         }

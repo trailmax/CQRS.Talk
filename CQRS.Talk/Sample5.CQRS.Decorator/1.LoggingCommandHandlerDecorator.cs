@@ -5,11 +5,12 @@ using Newtonsoft.Json;
 
 namespace CQRS.Talk.Sample5.CQRS.Decorator
 {
-    public class LoggedCommandHandlerDecorator<TCommand> : ICommandHandler<TCommand> where TCommand : ICommand
+    public class LoggedDecorator<TCommand> : 
+        ICommandHandler<TCommand> where TCommand : ICommand
     {
         private readonly ICommandHandler<TCommand> decorated;
 
-        public LoggedCommandHandlerDecorator(ICommandHandler<TCommand> decorated)
+        public LoggedDecorator(ICommandHandler<TCommand> decorated)
         {
             this.decorated = decorated;
         }
@@ -18,11 +19,13 @@ namespace CQRS.Talk.Sample5.CQRS.Decorator
         public void Handle(TCommand command)
         {
             var serialisedData = JsonConvert.SerializeObject(command);
-            Logger.Info("About to handle command handler of type {0} with data {1}", command.GetType().Name, serialisedData);
+            var commmandName = command.GetType().Name;
+
+            Logger.Info("Start handler {0} with data {1}", commmandName, serialisedData);
 
             decorated.Handle(command);
 
-            Logger.Info("Finished with command handler of type {0}", command.GetType().Name);
+            Logger.Info("Finished with command {0}", commmandName);
         }
     }
 }
