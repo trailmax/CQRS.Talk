@@ -3,9 +3,9 @@
 
 namespace CQRS.Talk.Dependencies
 {
+    // Fake DbContext dependency
     public class MyDbContext
     {
-        // this is a fake dependency
         public MyDbContext()
         {
             People = new List<Person>();

@@ -7,9 +7,7 @@ namespace CQRS.Talk.Refactoring2.Commands._5.Mediator
 {
     class ServiceConsumer : Controller
     {
-		//I'm so tyred of typing!
         private readonly IMediator mediator;
-
 
         public ServiceConsumer(IMediator mediator)
         {
