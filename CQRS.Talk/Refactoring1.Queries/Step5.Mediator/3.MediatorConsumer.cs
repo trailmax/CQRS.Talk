@@ -12,7 +12,8 @@ namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
         public int NumberOfYears { get; set; }
         public bool IsNewPensionScheme { get; set; }
     }
-    public class StaffWithLengthOfServiceQueryHandler : IQueryHandler<StaffWithLengthOfServiceQuery, IEnumerable<Person>>
+    public class StaffWithLengthOfServiceQueryHandler : 
+        IQueryHandler<StaffWithLengthOfServiceQuery, IEnumerable<Person>>
     {
         public IEnumerable<Person> Handle(IQuery<IEnumerable<Person>> query)
         {
@@ -57,9 +58,12 @@ namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
 
         public ActionResult FindByEmail(String email)
         {
-            var query = new FindPersonByEmailQuery() { Email = email, IsCurrentlyEmployed = true };
-            Person person =
-                mediator.Handle(query);
+            var query = new FindPersonByEmailQuery()
+            {
+                Email = email,
+                IsCurrentlyEmployed = true
+            };
+            var person = mediator.Handle(query);
 
             return View(person);
         }

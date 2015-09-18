@@ -23,7 +23,11 @@ namespace CQRS.Talk.Refactoring1.Queries.Step3.CommonPattern
 
         public IEnumerable<Person> Handle(StaffWithLengthOfServiceQuery query)
         {
-            const string sql = "where isCurrentlyEmployed = 1 and datediff(Year, DateOfJoin, GetDate()) >= @0 And isNewPensionScheme = @1";
+            const string sql = @"where 
+                                    isCurrentlyEmployed = 1 and 
+                                    datediff(Year, DateOfJoin, GetDate()) >= @0 
+                                    and isNewPensionScheme = @1";
+
             var people = database.Query<Person>(sql, query.NumberOfYears, query.IsNewPensionScheme);
 
             return people;

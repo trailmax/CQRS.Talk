@@ -12,7 +12,9 @@ namespace CQRS.Talk.Refactoring1.Queries.Step4.Interfaces
         private readonly IQueryHandler<FindPersonByEmailQuery, Person> findByEmailHandler;
 
 
-        public QueryHandlerConsumer(IQueryHandler<StaffWithLengthOfServiceQuery, IEnumerable<Person>> eligibleForReviewHandler, IQueryHandler<FindPersonByEmailQuery, Person> findByEmailHandler)
+        public QueryHandlerConsumer(
+            IQueryHandler<StaffWithLengthOfServiceQuery, IEnumerable<Person>> eligibleForReviewHandler, 
+            IQueryHandler<FindPersonByEmailQuery, Person> findByEmailHandler)
         {
             this.eligibleForReviewHandler = eligibleForReviewHandler;
             this.findByEmailHandler = findByEmailHandler;
@@ -21,7 +23,8 @@ namespace CQRS.Talk.Refactoring1.Queries.Step4.Interfaces
 
         public ActionResult EligibleForReview()
         {
-            IEnumerable<Person> people = eligibleForReviewHandler.Handle(new StaffWithLengthOfServiceQuery());
+            var people = eligibleForReviewHandler.Handle(
+                new StaffWithLengthOfServiceQuery());
 
             return View(people);
         }
@@ -29,8 +32,12 @@ namespace CQRS.Talk.Refactoring1.Queries.Step4.Interfaces
 
         public ActionResult FindByEmail(String email)
         {
-            Person person = 
-                findByEmailHandler.Handle(new FindPersonByEmailQuery() { Email = email, IsCurrentlyEmployed = true });
+            var query = new FindPersonByEmailQuery()
+            {
+                Email = email,
+                IsCurrentlyEmployed = true
+            };
+            var person = findByEmailHandler.Handle(query);
 
             return View(person);
         }

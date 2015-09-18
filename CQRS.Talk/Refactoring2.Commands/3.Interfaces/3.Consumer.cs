@@ -10,7 +10,9 @@ namespace CQRS.Talk.Refactoring2.Commands._3.Interfaces
         private readonly ICommandHandler<UpdateDelegateFromSessionCommand> updateDelegateCommandHandler;
 
 
-        public ServiceConsumer(ICommandHandler<AddDelegateToSessionCommand> addDelegateCommandHandler, ICommandHandler<UpdateDelegateFromSessionCommand> updateDelegateCommandHandler)
+        public ServiceConsumer(
+            ICommandHandler<AddDelegateToSessionCommand> addDelegateCommandHandler, 
+            ICommandHandler<UpdateDelegateFromSessionCommand> updateDelegateCommandHandler)
         {
             this.addDelegateCommandHandler = addDelegateCommandHandler;
             this.updateDelegateCommandHandler = updateDelegateCommandHandler;

@@ -17,9 +17,13 @@ namespace CQRS.Talk.Refactoring1.Queries.Step2.BasicQueries
         }
 
 
-        public IEnumerable<Person> GetStaffWithLengthOfServiceMoreThan(int numberOfYears = 3, bool isNewPensionScheme = true)
+        public IEnumerable<Person> GetStaffWithLengthOfServiceMoreThan
+            (int numberOfYears = 3, bool isNewPensionScheme = true)
         {
-            const string sql = "where isCurrentlyEmployed = 1 and datediff(Year, DateOfJoin, GetDate()) >= @0 And isNewPensionScheme = @1";
+            const string sql = @"where 
+                                    isCurrentlyEmployed = 1 and 
+                                    datediff(Year, DateOfJoin, GetDate()) >= @0 
+                                    and isNewPensionScheme = @1";
             var people = database.Query<Person>(sql, numberOfYears, isNewPensionScheme);
 
             return people;

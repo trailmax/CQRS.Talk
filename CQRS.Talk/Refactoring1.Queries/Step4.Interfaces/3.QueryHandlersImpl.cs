@@ -12,7 +12,8 @@ namespace CQRS.Talk.Refactoring1.Queries.Step4.Interfaces
         public bool IsNewPensionScheme { get; set; }
     }
 
-    public class StaffWithLengthOfServiceQueryHandler : IQueryHandler<StaffWithLengthOfServiceQuery, IEnumerable<Person>>
+    public class StaffWithLengthOfServiceQueryHandler : 
+        IQueryHandler<StaffWithLengthOfServiceQuery, IEnumerable<Person>>
     {
         private readonly PetaPoco.Database database;
         public StaffWithLengthOfServiceQueryHandler(Database database)
@@ -23,7 +24,11 @@ namespace CQRS.Talk.Refactoring1.Queries.Step4.Interfaces
 
         public IEnumerable<Person> Handle(StaffWithLengthOfServiceQuery query)
         {
-            const string sql = "where isCurrentlyEmployed = 1 and datediff(Year, DateOfJoin, GetDate()) >= @0 And isNewPensionScheme = @1";
+            const string sql = @"where 
+                                    isCurrentlyEmployed = 1 and 
+                                    datediff(Year, DateOfJoin, GetDate()) >= @0 
+                                    and isNewPensionScheme = @1";
+
             var people = database.Query<Person>(sql, query.NumberOfYears, query.IsNewPensionScheme);
 
             return people;
@@ -37,7 +42,8 @@ namespace CQRS.Talk.Refactoring1.Queries.Step4.Interfaces
         public bool? IsCurrentlyEmployed { get; set; }
     }
 
-    public class FindPersonByEmailQueryHandler : IQueryHandler<FindPersonByEmailQuery, Person>
+    public class FindPersonByEmailQueryHandler : 
+        IQueryHandler<FindPersonByEmailQuery, Person>
     {
         private readonly PetaPoco.Database database;
         public FindPersonByEmailQueryHandler(Database database)

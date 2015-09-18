@@ -8,7 +8,7 @@ namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
     //    TResult Handle(TQuery query);
     //}
 
-#region IQuery 
+    #region IQuery with Generic 
 
     public interface IQuery<TResult> { }
 

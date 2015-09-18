@@ -11,7 +11,9 @@ namespace CQRS.Talk.Refactoring1.Queries.Step1.Repository
         Person Find(Guid personId);
         void Insert(Person newPerson);
         void Update(Person person);
-        IEnumerable<Person> GetStaffWithLengthOfServiceMoreThan(int numberOfYears = 3, bool isNewPensionScheme = true);
+        IEnumerable<Person> GetStaffWithLengthOfServiceMoreThan
+            (int numberOfYears = 3, bool isNewPensionScheme = true);
+
         Person FindPersonByEmail(String email, bool? isCurrentlyEmployed = null);
     }
 
@@ -46,9 +48,13 @@ namespace CQRS.Talk.Refactoring1.Queries.Step1.Repository
         }
 
 
-        public IEnumerable<Person> GetStaffWithLengthOfServiceMoreThan(int numberOfYears = 3, bool isNewPensionScheme = true)
+        public IEnumerable<Person> GetStaffWithLengthOfServiceMoreThan
+            (int numberOfYears = 3, bool isNewPensionScheme = true)
         {
-            const string sql = "where isCurrentlyEmployed = 1 and datediff(Year, DateOfJoin, GetDate()) >= @0 And isNewPensionScheme = @1";
+            const string sql = @"where 
+                                    isCurrentlyEmployed = 1 
+                                    and datediff(Year, DateOfJoin, GetDate()) >= @0 
+                                    and isNewPensionScheme = @1";
             var people = database.Query<Person>(sql, numberOfYears, isNewPensionScheme);
 
             return people;

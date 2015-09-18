@@ -10,7 +10,8 @@ namespace CQRS.Talk.Refactoring2.Commands._3.Interfaces
         public int PersonId { get; set ;}
     }
 
-    public class AddDelegateToSessionCommandHandler : ICommandHandler<AddDelegateToSessionCommand>
+    public class AddDelegateToSessionCommandHandler : 
+        ICommandHandler<AddDelegateToSessionCommand>
     {
         private readonly ISessionDelegateRepository sessionDelegateRepository;
         private readonly IWorkMovementService workMovementService;
@@ -67,13 +68,11 @@ namespace CQRS.Talk.Refactoring2.Commands._3.Interfaces
         private readonly ISessionDelegateRepository sessionDelegateRepository;
         private readonly IWorkMovementService workMovementService;
 
-
         public UpdateDelegateFromSessionCommandHandler(ISessionDelegateRepository sessionDelegateRepository, IWorkMovementService workMovementService)
         {
             this.sessionDelegateRepository = sessionDelegateRepository;
             this.workMovementService = workMovementService;
         }
-
 
         public void Handle(UpdateDelegateFromSessionCommand command)
         {

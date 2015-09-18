@@ -1,5 +1,6 @@
 ﻿using System;
 using CQRS.Talk.Dependencies;
+// ReSharper disable RedundantArgumentNameForLiteralExpression
 
 
 namespace CQRS.Talk.Refactoring1.Queries.Step1.Repository
