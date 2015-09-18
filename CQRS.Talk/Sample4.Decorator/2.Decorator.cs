@@ -17,7 +17,7 @@ namespace CQRS.Talk.Sample4.Decorator
 
         public int DoSomeMagic(float numberOfTrolls)
         {
-			Logger.Info("Starting doing Some Magic, Number of trolls: " + numberOfTrolls);
+            Logger.Info("Starting doing Some Magic, Number of trolls: {0}", numberOfTrolls);
 
             var result = decorated.DoSomeMagic(numberOfTrolls);
 
@@ -28,15 +28,17 @@ namespace CQRS.Talk.Sample4.Decorator
     }
 
 
-#region Logger
+    #region Logger
 
     static class Logger
     {
-        public static void Info(String message)
+        public static void Info(String message, params object[] stringParams)
         {
-            Trace.WriteLine(message);
+            var formattedMessage = String.Format(message, stringParams);
+
+            Trace.WriteLine(formattedMessage);
         }
     }
 
-#endregion
+    #endregion
 }
