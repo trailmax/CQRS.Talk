@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 
-namespace CQRS.Talk.Refactoring2.Queries
+
+namespace CQRS.Talk.Refactoring2.Queries._1.Service
 {
     public interface ITrainingService
     {
-        int AddDelegateToSession(ISessionDelegateCreate delegateData);
+        void AddDelegateToSession(ISessionDelegateCreate delegateData);
         void UpdateDelegateFromSession(ISessionDelegateUpdate delegateData);
         void CancelDelegateFromSession(int delegateId);
         void SessionDelegateNoShow(int sessionDelegateId);
@@ -41,7 +40,7 @@ namespace CQRS.Talk.Refactoring2.Queries
         }
 
 
-        public int AddDelegateToSession(ISessionDelegateCreate delegateData)
+        public void AddDelegateToSession(ISessionDelegateCreate delegateData)
         {
             var sessionDelegate = new SessionDelegate(delegateData);
             sessionDelegateRepository.Insert(sessionDelegate);
@@ -50,8 +49,6 @@ namespace CQRS.Talk.Refactoring2.Queries
             var createWorkMovementCommand = this.CreateWorkMovementCommand(delegateData, sessionDelegate);
 
             workMovementService.CreateWorkMovement(createWorkMovementCommand);
-
-            return sessionDelegate.SessionDelegateId;
         }
 
 
@@ -59,7 +56,7 @@ namespace CQRS.Talk.Refactoring2.Queries
         {
             var session = sessionRepository.All.FirstOrDefault(s => s.CourseSessionId == delegateData.CourseSessionId);
             var person = personRepository.Find(delegateData.PersonId);
-            var movementType = this.movementTypeRepository.All.FirstOrDefault(t => t.Name == "Training");
+            var movementType = movementTypeRepository.All.FirstOrDefault(t => t.Name == "Training");
 
             var createWorkMovementCommand = new CreateWorkMovementCommand()
             {

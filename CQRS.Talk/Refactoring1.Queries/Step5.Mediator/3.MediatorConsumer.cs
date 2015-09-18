@@ -12,11 +12,26 @@ namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
         public int NumberOfYears { get; set; }
         public bool IsNewPensionScheme { get; set; }
     }
+    public class StaffWithLengthOfServiceQueryHandler : IQueryHandler<StaffWithLengthOfServiceQuery, IEnumerable<Person>>
+    {
+        public IEnumerable<Person> Request(IQuery<IEnumerable<Person>> query)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
 
     public class FindPersonByEmailQuery : IQuery<Person>
     {
         public String Email { get; set; }
         public bool? IsCurrentlyEmployed { get; set; }
+    }
+    public class FindPersonByEmailQueryHandler : IQueryHandler<FindPersonByEmailQuery, Person>
+    {
+        public Person Request(IQuery<Person> query)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     #endregion

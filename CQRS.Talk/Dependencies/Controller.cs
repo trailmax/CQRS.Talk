@@ -14,6 +14,18 @@ namespace CQRS.Talk.Dependencies
         {
             return new ActionResult();
         }
+
+
+        public ActionResult RedirectToAction(String action, String controller)
+        {
+            return new ActionResult();
+        }
+
+
+        public ActionResult RedirectToAction(String action, String controller, object parameter)
+        {
+            return new ActionResult();
+        }
     }
 
 
@@ -21,4 +33,6 @@ namespace CQRS.Talk.Dependencies
     {
         // Fake 
     }
+
+
 }

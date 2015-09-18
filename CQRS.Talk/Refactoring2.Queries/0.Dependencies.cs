@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CQRS.Talk.Refactoring2.Queries._3.Interfaces;
 
 namespace CQRS.Talk.Refactoring2.Queries
 {
@@ -23,17 +21,29 @@ namespace CQRS.Talk.Refactoring2.Queries
 
     public class SessionDelegate
     {
+        private AddDelegateToSessionCommand command;
+
         public SessionDelegate(ISessionDelegateCreate delegateData)
         {
             throw new NotImplementedException();
         }
 
+        public SessionDelegate(AddDelegateToSessionCommand command)
+        {
+            this.command = command;
+        }
 
         public int SessionDelegateId { get; set; }
         public int PersonId { get; set; }
 
 
         public void Update(ISessionDelegateUpdate delegateData)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void Update(UpdateDelegateFromSessionCommand delegateData)
         {
             throw new NotImplementedException();
         }
@@ -112,4 +122,16 @@ namespace CQRS.Talk.Refactoring2.Queries
         int CourseSessionId { get; set; }
         int PersonId { get; set; }
     }
+
+    public class SessionDelegateCreate : ISessionDelegateCreate
+    {
+        public int CourseSessionId { get; set; }
+        public int PersonId { get; set; }
+    }
+
+
+    public class HttpPostAttribute : Attribute
+    {
+    }
+
 }

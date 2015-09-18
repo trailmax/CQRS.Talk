@@ -1,5 +1,4 @@
 ﻿using CQRS.Talk.Dependencies;
-using CQRS.Talk.Refactoring1.Queries.Step4.Interfaces;
 
 
 namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
@@ -12,6 +11,12 @@ namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
 #region IQuery 
 
     public interface IQuery<TResult> { }
+
+
+    public interface IQueryHandler<TQuery, TResult> where TQuery : IQuery<TResult>
+    {
+        TResult Request(IQuery<TResult> query);
+    }
 
 #endregion
 
