@@ -6,7 +6,7 @@ namespace CQRS.Talk.Sample1.SeparateReadsFromWrites
     /// <summary>
     /// The solution to the previous problem is to separate command from a query.
     /// Query if the attribute exists;
-    /// then updte the value - as 2 different operations
+    /// then update the value - as 2 different operations
     /// </summary>
     public class Separate
     {

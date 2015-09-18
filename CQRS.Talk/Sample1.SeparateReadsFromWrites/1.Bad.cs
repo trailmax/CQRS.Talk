@@ -25,7 +25,7 @@ namespace CQRS.Talk.Sample1.SeparateReadsFromWrites
                 // do something
             }
             /**
-            * Is `set` her a verb or an adjective?
+            * Is `set` here a verb or an adjective?
             * Does this check if href value was set to localhost before?
             */
         }
