@@ -10,6 +10,11 @@ namespace CQRS.Talk.Dependencies
     {
         // Fake Controller class
 
+        public ActionResult View()
+        {
+            return new ActionResult();
+        }
+
         public ActionResult View(object @object)
         {
             return new ActionResult();

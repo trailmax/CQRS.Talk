@@ -13,5 +13,11 @@ namespace CQRS.Talk.Dependencies
         {
             throw new NotImplementedException();
         }
+
+
+        public T Resolve<T>()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

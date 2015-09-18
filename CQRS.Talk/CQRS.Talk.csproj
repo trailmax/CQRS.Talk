@@ -58,10 +58,13 @@
     <Compile Include="Refactoring1.Queries\Step4.Interfaces\4.QueryHandlerConsumer.cs" />
     <Compile Include="Refactoring1.Queries\Step5.Mediator\1.SimpleMediator.cs" />
     <Compile Include="Refactoring1.Queries\Step5.Mediator\3.MediatorConsumer.cs" />
-    <Compile Include="Refactoring2.Queries\0.Dependencies.cs" />
-    <Compile Include="Refactoring2.Queries\1.Service\1.Service.cs" />
-    <Compile Include="Refactoring2.Queries\2.BasicCommands\BasicCommands.cs" />
-    <Compile Include="Refactoring2.Queries\3.Interfaces\2.Commands.cs" />
+    <Compile Include="Refactoring2.Commands\0.Dependencies.cs" />
+    <Compile Include="Refactoring2.Commands\1.Service\1.Service.cs" />
+    <Compile Include="Refactoring2.Commands\2.BasicCommands\BasicCommands.cs" />
+    <Compile Include="Refactoring2.Commands\3.Interfaces\2.Commands.cs" />
+    <Compile Include="Refactoring2.Commands\4.Validators\2.Consumer.cs" />
+    <Compile Include="Refactoring2.Commands\5.Mediator\1.Mediator.cs" />
+    <Compile Include="Refactoring2.Commands\5.Mediator\2.Consumer.cs" />
     <Compile Include="Sample1.SeparateReadsFromWrites\Bad.cs" />
     <Compile Include="Sample1.SeparateReadsFromWrites\Good.cs" />
     <Compile Include="Extra\01.CaseOfPlusPlus\PlusPlus.cs" />
@@ -72,8 +75,10 @@
     <Compile Include="Refactoring1.Queries\Step4.Interfaces\1.BasicQueryHandler.cs" />
     <Compile Include="Refactoring1.Queries\Step4.Interfaces\2.IQueryHanlder.cs" />
     <Compile Include="Refactoring1.Queries\Step5.Mediator\2.Mediator.cs" />
-    <Compile Include="Refactoring2.Queries\1.Service\2.ServiceConsumer.cs" />
-    <Compile Include="Refactoring2.Queries\3.Interfaces\1.Interfaces.cs" />
+    <Compile Include="Refactoring2.Commands\1.Service\2.ServiceConsumer.cs" />
+    <Compile Include="Refactoring2.Commands\3.Interfaces\1.Interfaces.cs" />
+    <Compile Include="Refactoring2.Commands\3.Interfaces\3.Consumer.cs" />
+    <Compile Include="Refactoring2.Commands\4.Validators\1.Validators.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Sample3.SelectQueries\ReadFromModel.sql" />
