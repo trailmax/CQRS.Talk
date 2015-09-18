@@ -81,6 +81,8 @@
     <Compile Include="Sample5.CQRS.Decorator\3.Execute.cs" />
     <Compile Include="Sample5.CQRS.Decorator\1.LoggingCommandHandlerDecorator.cs" />
     <Compile Include="Sample5.CQRS.Decorator\2.TimedCommandHandlerDecorator.cs" />
+    <Compile Include="Sample5.CQRS.Decorator\Query\2.CachedQueryHandlerDecorator.cs" />
+    <Compile Include="Sample5.CQRS.Decorator\Query\1.ICachedQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
