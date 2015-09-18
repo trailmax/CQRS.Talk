@@ -1,8 +1,6 @@
 ﻿using System.Linq;
 using CQRS.Talk.Dependencies;
 using CQRS.Talk.Refactoring2.Commands._3.Interfaces;
-using CQRS.Talk.Refactoring2.Queries;
-using CQRS.Talk.Refactoring2.Queries._3.Interfaces;
 
 
 namespace CQRS.Talk.Refactoring2.Commands._4.Validators

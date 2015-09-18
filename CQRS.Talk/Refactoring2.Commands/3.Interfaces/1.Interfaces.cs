@@ -1,4 +1,4 @@
-﻿namespace CQRS.Talk.Refactoring2.Queries._3.Interfaces
+﻿namespace CQRS.Talk.Refactoring2.Commands._3.Interfaces
 {
     public interface ICommand
     {

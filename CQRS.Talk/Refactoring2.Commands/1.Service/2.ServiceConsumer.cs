@@ -1,7 +1,7 @@
 ﻿using CQRS.Talk.Dependencies;
 
 
-namespace CQRS.Talk.Refactoring2.Queries._1.Service
+namespace CQRS.Talk.Refactoring2.Commands._1.Service
 {
     class ServiceConsumer : Controller
     {

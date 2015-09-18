@@ -1,4 +1,4 @@
-﻿using CQRS.Talk.Refactoring2.Queries._3.Interfaces;
+﻿using CQRS.Talk.Refactoring2.Commands._3.Interfaces;
 using CQRS.Talk.Sample4.Decorator;
 using Newtonsoft.Json;
 

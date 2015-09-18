@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 
 
-namespace CQRS.Talk.Refactoring2.Queries._2.BasicCommands
+namespace CQRS.Talk.Refactoring2.Commands._2.BasicCommands
 {
     public class AddDelegateToSessionCommand
     {

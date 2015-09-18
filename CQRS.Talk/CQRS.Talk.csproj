@@ -78,7 +78,9 @@
     <Compile Include="Extra\01.CaseOfPlusPlus\PlusPlus.cs" />
     <Compile Include="Sample2.BasicSQRS\AttributeChecker.cs" />
     <Compile Include="Sample4.Decorator\3.ConsumerFactory.cs" />
-    <Compile Include="Sample5.CQRS.Decorator\LoggingCommandHandlerDecorator.cs" />
+    <Compile Include="Sample5.CQRS.Decorator\3.Execute.cs" />
+    <Compile Include="Sample5.CQRS.Decorator\1.LoggingCommandHandlerDecorator.cs" />
+    <Compile Include="Sample5.CQRS.Decorator\2.TimedCommandHandlerDecorator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

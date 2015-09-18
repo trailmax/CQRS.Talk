@@ -2,7 +2,7 @@
 using System;
 
 
-namespace CQRS.Talk.Sample2
+namespace CQRS.Talk.Sample2.BasicSQRS
 {
     public class CheckAttributeQuery
     {

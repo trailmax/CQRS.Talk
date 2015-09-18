@@ -4,7 +4,7 @@ using CQRS.Talk.Dependencies;
 using PetaPoco;
 
 
-namespace CQRS.Talk.Refactoring1.Step2.BasicQueries
+namespace CQRS.Talk.Refactoring1.Queries.Step2.BasicQueries
 {
     public class StaffWithLengthOfServiceQuery
     {

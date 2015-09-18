@@ -1,8 +1,6 @@
 ﻿using System.Linq;
 using CQRS.Talk.Dependencies;
 using CQRS.Talk.Refactoring2.Commands._3.Interfaces;
-using CQRS.Talk.Refactoring2.Commands._4.Mediator;
-using CQRS.Talk.Refactoring2.Queries;
 
 
 namespace CQRS.Talk.Refactoring2.Commands._5.Mediator

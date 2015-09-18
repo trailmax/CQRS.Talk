@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace CQRS.Talk.Sample1
+namespace CQRS.Talk.Sample1.SeparateReadsFromWrites
 {
     /// <summary>
     /// The solution to the previous problem is to separate command from a query.

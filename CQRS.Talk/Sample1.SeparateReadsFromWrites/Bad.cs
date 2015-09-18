@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace CQRS.Talk.Sample1
+namespace CQRS.Talk.Sample1.SeparateReadsFromWrites
 {
     public class Alltogether
     {

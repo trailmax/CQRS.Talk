@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace CQRS.Talk.Sample2.CaseOfPlusPlus
+namespace CQRS.Talk.Extra._01.CaseOfPlusPlus
 {
     class PlusPlus
     {
