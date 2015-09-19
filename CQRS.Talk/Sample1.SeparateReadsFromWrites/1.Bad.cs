@@ -6,7 +6,8 @@ namespace CQRS.Talk.Sample1.SeparateReadsFromWrites
     public class Alltogether
     {
         /// <summary>
-        /// Sets the attribute and returns true for successfull, false if key was not found
+        /// Sets the attribute and returns true for successfull, 
+        /// false if key was not found
         /// </summary>
         public static bool Set(String attributeName, String value)
         {
