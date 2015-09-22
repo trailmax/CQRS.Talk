@@ -1,36 +1,36 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using CQRS.Talk.Refactoring2.Commands._3.Interfaces;
 using NUnit.Framework;
 
 
 namespace CQRS.Talk.Sample5.CQRS.Decorator
 {
-    public class DelayedTimerCommand : ICommand
+    public class SlowRunningCommand : ICommand
     {
-        public DelayedTimerCommand(int delayByMilliseconds)
+        public string SomeParameter { get; }
+
+        public SlowRunningCommand(String someParameter)
         {
-            DelayByMilliseconds = delayByMilliseconds;
+            this.SomeParameter = someParameter;
         }
-
-
-        public int DelayByMilliseconds { get; private set; }
     }
-    public class DelayedTimerCommandHanlder : ICommandHandler<DelayedTimerCommand>
+    public class SlowRunningCommandHandler : ICommandHandler<SlowRunningCommand>
     {
-        public void Handle(DelayedTimerCommand command)
+        public void Handle(SlowRunningCommand command)
         {
-            Thread.Sleep(command.DelayByMilliseconds);
+            Thread.Sleep(1234);
         }
     }
 
 
     class CommandHandlerFactory
     {
-        public static ICommandHandler<DelayedTimerCommand> CreateHandler()
+        public static ICommandHandler<SlowRunningCommand> CreateHandler()
         {
-            var commandHandler = new DelayedTimerCommandHanlder();
-            var timedDecorator = new TimedDecorator<DelayedTimerCommand>(commandHandler);
-            var loggedDecorator = new LoggedDecorator<DelayedTimerCommand>(timedDecorator);
+            var commandHandler = new SlowRunningCommandHandler();
+            var timedDecorator = new TimedDecorator<SlowRunningCommand>(commandHandler);
+            var loggedDecorator = new LoggedDecorator<SlowRunningCommand>(timedDecorator);
 
             return loggedDecorator;
         }
@@ -42,8 +42,8 @@ namespace CQRS.Talk.Sample5.CQRS.Decorator
         [Test]
         public void Execute()
         {
-            var command = new DelayedTimerCommand(1234);
-            ICommandHandler<DelayedTimerCommand> commandHandler = 
+            var command = new SlowRunningCommand("our parameter");
+            ICommandHandler<SlowRunningCommand> commandHandler = 
                 CommandHandlerFactory.CreateHandler();
 
             commandHandler.Handle(command);
