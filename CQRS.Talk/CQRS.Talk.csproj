@@ -77,8 +77,8 @@
     <Compile Include="Sample2.BasicSQRS\AttributeChecker.cs" />
     <Compile Include="Sample4.Decorator\3.ConsumerFactory.cs" />
     <Compile Include="Sample5.CQRS.Decorator\3.Execute.cs" />
-    <Compile Include="Sample5.CQRS.Decorator\1.LoggingCommandHandlerDecorator.cs" />
-    <Compile Include="Sample5.CQRS.Decorator\2.TimedCommandHandlerDecorator.cs" />
+    <Compile Include="Sample5.CQRS.Decorator\1.LoggingDecorator.cs" />
+    <Compile Include="Sample5.CQRS.Decorator\2.TimedDecorator.cs" />
     <Compile Include="Sample5.CQRS.Decorator\Query\2.CachedQueryHandlerDecorator.cs" />
     <Compile Include="Sample5.CQRS.Decorator\Query\1.ICachedQuery.cs" />
   </ItemGroup>
@@ -94,6 +94,7 @@
     <Compile Include="Sample4.Decorator\1.Service.cs" />
     <Compile Include="Sample4.Decorator\2.Decorator.cs" />
     <None Include="packages.config" />
+    <Compile Include="Refactoring2.Commands\4.Validators\0.Interface.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Sample3.SelectQueries\ReadFromModel.sql" />

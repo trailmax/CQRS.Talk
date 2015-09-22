@@ -15,18 +15,18 @@ namespace CQRS.Talk.Refactoring2.Commands._1.Service
 
 
         [HttpPost]
-        public ActionResult AddSessionDelegate(SessionDelegateCreate sessionDelegate)
+        public ActionResult AddDelegate(SessionDelegateCreate sessionDelegate)
         {
-            trainingService.AddDelegateToSession(sessionDelegate);
+            trainingService.AddDelegate(sessionDelegate);
 
             return RedirectToAction("Index", "SessionDelegate");
         }
 
 
         [HttpPost]
-        public ActionResult CancelSessionDelegateFromSession(int delegateId)
+        public ActionResult CancelDelegate(int delegateId)
         {
-            trainingService.CancelDelegateFromSession(delegateId);
+            trainingService.CancelDelegate(delegateId);
 
             return RedirectToAction("Index", "Session");
         }

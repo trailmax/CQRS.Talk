@@ -5,12 +5,12 @@ using Newtonsoft.Json;
 
 namespace CQRS.Talk.Sample5.CQRS.Decorator
 {
-    public class LoggedDecorator<TCommand> : 
+    public class LoggingDecorator<TCommand> : 
         ICommandHandler<TCommand> where TCommand : ICommand
     {
         private readonly ICommandHandler<TCommand> decorated;
 
-        public LoggedDecorator(ICommandHandler<TCommand> decorated)
+        public LoggingDecorator(ICommandHandler<TCommand> decorated)
         {
             this.decorated = decorated;
         }

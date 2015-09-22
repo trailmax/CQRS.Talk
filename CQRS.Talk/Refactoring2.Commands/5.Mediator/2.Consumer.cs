@@ -17,7 +17,7 @@ namespace CQRS.Talk.Refactoring2.Commands._5.Mediator
 
     
         [HttpPost]
-        public ActionResult AddSessionDelegate(AddDelegateToSessionCommand command)
+        public ActionResult AddSessionDelegate(AddDelegateCommand command)
         {
             var errors = mediator.ProcessCommand(command);
 
@@ -32,7 +32,7 @@ namespace CQRS.Talk.Refactoring2.Commands._5.Mediator
 
 
         [HttpPost]
-        public ActionResult CancelSessionDelegateFromSession(UpdateDelegateFromSessionCommand command)
+        public ActionResult CancelSessionDelegateFromSession(UpdateDelegateCommand command)
         {
             var errors = mediator.ProcessCommand(command);
 

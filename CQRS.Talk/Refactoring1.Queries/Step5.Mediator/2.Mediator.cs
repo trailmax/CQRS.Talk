@@ -1,4 +1,5 @@
-﻿using CQRS.Talk.Dependencies;
+﻿// ReSharper disable TypeParameterCanBeVariant
+using CQRS.Talk.Dependencies;
 
 
 namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
@@ -13,7 +14,7 @@ namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
     public interface IQuery<TResult> { }
 
 
-    public interface IQueryHandler<in TQuery, out TResult> where TQuery : IQuery<TResult>
+    public interface IQueryHandler<TQuery, TResult> where TQuery : IQuery<TResult>
     {
         TResult Handle(TQuery query);
     }
@@ -41,12 +42,15 @@ namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
 
         public TResult Handle<TResult>(IQuery<TResult> query)
         {
-            var handlerType =
-                typeof(IQueryHandler<,>).MakeGenericType(query.GetType(), typeof(TResult));
+            var queryHandlerType = typeof(IQueryHandler<,>);
+
+            var resultType = typeof(TResult);
+
+            var handlerType = queryHandlerType.MakeGenericType(query.GetType(), resultType);
 
             dynamic handler = container.GetInstance(handlerType);
 
-            return handler.Handle((dynamic)query);
+            return handler.Handle(query);
         }
     }
 

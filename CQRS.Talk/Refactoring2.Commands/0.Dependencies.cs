@@ -22,17 +22,24 @@ namespace CQRS.Talk.Refactoring2.Commands
 
     public class SessionDelegate
     {
-        private AddDelegateToSessionCommand command;
+        private AddDelegateCommand command;
 
         public SessionDelegate(ISessionDelegateCreate delegateData)
         {
             throw new NotImplementedException();
         }
 
-        public SessionDelegate(AddDelegateToSessionCommand command)
+        public SessionDelegate(AddDelegateCommand command)
         {
             this.command = command;
         }
+
+
+        public SessionDelegate(_2.BasicCommands.AddDelegateCommand delegateData)
+        {
+            throw new NotImplementedException();
+        }
+
 
         public int SessionDelegateId { get; set; }
         public int PersonId { get; set; }
@@ -44,7 +51,13 @@ namespace CQRS.Talk.Refactoring2.Commands
         }
 
 
-        public void Update(UpdateDelegateFromSessionCommand delegateData)
+        public void Update(UpdateDelegateCommand delegateData)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void Update(_2.BasicCommands.UpdateDelegateCommand delegateData)
         {
             throw new NotImplementedException();
         }
@@ -104,7 +117,7 @@ namespace CQRS.Talk.Refactoring2.Commands
 
 
 
-    public interface ISessionDelegateRepository
+    public interface IDelegateRepository
     {
         void Insert(SessionDelegate sessionDelegate);
         void Save();

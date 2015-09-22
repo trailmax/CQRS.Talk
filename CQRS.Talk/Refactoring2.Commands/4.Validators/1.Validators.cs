@@ -7,25 +7,19 @@ using PetaPoco;
 
 namespace CQRS.Talk.Refactoring2.Commands._4.Validators
 {
-    public interface ICommandValidator<TCommand> where TCommand : ICommand
-    {
-	    List<String> GetErrorList(TCommand command);
-    }
-
-
-	public class AddDelegateToSessionCommandValidator : 
-        ICommandValidator<AddDelegateToSessionCommand>
+	public class AddDelegateCommandValidator : 
+        ICommandValidator<AddDelegateCommand>
 	{
 	    private readonly Database database;
 
 
-	    public AddDelegateToSessionCommandValidator(Database database)
+	    public AddDelegateCommandValidator(Database database)
 	    {
 	        this.database = database;
 	    }
 
 
-	    public List<string> GetErrorList(AddDelegateToSessionCommand command)
+	    public List<string> GetErrorList(AddDelegateCommand command)
 	    {
 			var errors = new List<String>();
 

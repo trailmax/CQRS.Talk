@@ -1,57 +1,55 @@
-﻿using System.Linq;
-
-
+﻿ 
 namespace CQRS.Talk.Refactoring2.Commands._3.Interfaces
 {
-    public class AddDelegateToSessionCommand : ICommand
+    public class AddDelegateCommand : ICommand
     {
         public int CourseSessionId { get; set; }
 
         public int PersonId { get; set ;}
     }
 
-    public class AddDelegateToSessionCommandHandler : 
-        ICommandHandler<AddDelegateToSessionCommand>
+    public class AddDelegateCommandHandler : 
+        ICommandHandler<AddDelegateCommand>
     {
-        private readonly ISessionDelegateRepository sessionDelegateRepository;
-        public AddDelegateToSessionCommandHandler(ISessionDelegateRepository sessionDelegateRepository)
+        private readonly IDelegateRepository delegateRepository;
+        public AddDelegateCommandHandler(IDelegateRepository delegateRepository)
         {
-            this.sessionDelegateRepository = sessionDelegateRepository;
+            this.delegateRepository = delegateRepository;
         }
 
-        public void Handle(AddDelegateToSessionCommand command)
+        public void Handle(AddDelegateCommand command)
         {
             var sessionDelegate = new SessionDelegate(command);
-            sessionDelegateRepository.Insert(sessionDelegate);
-            sessionDelegateRepository.Save();
+            delegateRepository.Insert(sessionDelegate);
+            delegateRepository.Save();
         }
     }
 
 
 
-    public class UpdateDelegateFromSessionCommand : ICommand
+    public class UpdateDelegateCommand : ICommand
     {
         public int SessionDelegateId { get; set; }
         public int CourseSessionId { get; set; }
         public int PersonId { get; set; }
     }
 
-    public class UpdateDelegateFromSessionCommandHandler :
-        ICommandHandler<UpdateDelegateFromSessionCommand>
+    public class UpdateDelegateCommandHandler :
+        ICommandHandler<UpdateDelegateCommand>
     {
-        private readonly ISessionDelegateRepository sessionDelegateRepository;
+        private readonly IDelegateRepository delegateRepository;
 
-        public UpdateDelegateFromSessionCommandHandler(ISessionDelegateRepository sessionDelegateRepository)
+        public UpdateDelegateCommandHandler(IDelegateRepository delegateRepository)
         {
-            this.sessionDelegateRepository = sessionDelegateRepository;
+            this.delegateRepository = delegateRepository;
         }
 
-        public void Handle(UpdateDelegateFromSessionCommand command)
+        public void Handle(UpdateDelegateCommand command)
         {
-            var sessionDelegate = sessionDelegateRepository.Find(command.SessionDelegateId);
+            var sessionDelegate = delegateRepository.Find(command.SessionDelegateId);
             sessionDelegate.Update(command);
-            sessionDelegateRepository.Update(sessionDelegate);
-            sessionDelegateRepository.Save();
+            delegateRepository.Update(sessionDelegate);
+            delegateRepository.Save();
         }
     }
 }

@@ -8,17 +8,17 @@ namespace CQRS.Talk.Refactoring2.Commands._4.Validators
     class ServiceConsumer : Controller
     {
 		//I'm so tired of typing!
-        private readonly ICommandHandler<AddDelegateToSessionCommand> addHandler;
-        private readonly ICommandValidator<AddDelegateToSessionCommand> addValidator;
-        private readonly ICommandHandler<UpdateDelegateFromSessionCommand> updateHandler;
-        private readonly ICommandValidator<UpdateDelegateFromSessionCommand> updateValidator;
+        private readonly ICommandHandler<AddDelegateCommand> addHandler;
+        private readonly ICommandValidator<AddDelegateCommand> addValidator;
+        private readonly ICommandHandler<UpdateDelegateCommand> updateHandler;
+        private readonly ICommandValidator<UpdateDelegateCommand> updateValidator;
 
 
         public ServiceConsumer(
-            ICommandHandler<AddDelegateToSessionCommand> addHandler, 
-            ICommandHandler<UpdateDelegateFromSessionCommand> updateHandler, 
-            ICommandValidator<AddDelegateToSessionCommand> addValidator, 
-            ICommandValidator<UpdateDelegateFromSessionCommand> updateValidator)
+            ICommandHandler<AddDelegateCommand> addHandler, 
+            ICommandHandler<UpdateDelegateCommand> updateHandler, 
+            ICommandValidator<AddDelegateCommand> addValidator, 
+            ICommandValidator<UpdateDelegateCommand> updateValidator)
         {
             this.addHandler = addHandler;
             this.updateHandler = updateHandler;
@@ -29,7 +29,7 @@ namespace CQRS.Talk.Refactoring2.Commands._4.Validators
 
     
         [HttpPost]
-        public ActionResult AddSessionDelegate(AddDelegateToSessionCommand command)
+        public ActionResult AddSessionDelegate(AddDelegateCommand command)
         {
             var errors = addValidator.GetErrorList(command);
 
@@ -45,7 +45,7 @@ namespace CQRS.Talk.Refactoring2.Commands._4.Validators
 
 
         [HttpPost]
-        public ActionResult CancelSessionDelegateFromSession(UpdateDelegateFromSessionCommand command)
+        public ActionResult CancelSessionDelegateFromSession(UpdateDelegateCommand command)
         {
             var errors = updateValidator.GetErrorList(command);
 

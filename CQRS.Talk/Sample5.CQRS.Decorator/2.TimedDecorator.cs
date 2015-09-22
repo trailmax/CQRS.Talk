@@ -18,7 +18,7 @@ namespace CQRS.Talk.Sample5.CQRS.Decorator
 
         public void Handle(TCommand command)
         {
-            Stopwatch stopwatch = Stopwatch.StartNew();
+            var stopwatch = Stopwatch.StartNew();
 
             decorated.Handle(command);
 

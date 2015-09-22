@@ -6,13 +6,13 @@ namespace CQRS.Talk.Refactoring2.Commands._3.Interfaces
     class ServiceConsumer : Controller
     {
 		//OMG!!!! LOOK AT THIS AGAIN!!!
-        private readonly ICommandHandler<AddDelegateToSessionCommand> addHandler;
-        private readonly ICommandHandler<UpdateDelegateFromSessionCommand> updateHandler;
+        private readonly ICommandHandler<AddDelegateCommand> addHandler;
+        private readonly ICommandHandler<UpdateDelegateCommand> updateHandler;
 
 
         public ServiceConsumer(
-            ICommandHandler<AddDelegateToSessionCommand> addHandler, 
-            ICommandHandler<UpdateDelegateFromSessionCommand> updateHandler)
+            ICommandHandler<AddDelegateCommand> addHandler, 
+            ICommandHandler<UpdateDelegateCommand> updateHandler)
         {
             this.addHandler = addHandler;
             this.updateHandler = updateHandler;
@@ -21,7 +21,7 @@ namespace CQRS.Talk.Refactoring2.Commands._3.Interfaces
 
     
         [HttpPost]
-        public ActionResult AddSessionDelegate(AddDelegateToSessionCommand command)
+        public ActionResult AddSessionDelegate(AddDelegateCommand command)
         {
             addHandler.Handle(command);
 
@@ -30,7 +30,7 @@ namespace CQRS.Talk.Refactoring2.Commands._3.Interfaces
 
 
         [HttpPost]
-        public ActionResult CancelSessionDelegateFromSession(UpdateDelegateFromSessionCommand command)
+        public ActionResult CancelSessionDelegateFromSession(UpdateDelegateCommand command)
         {
             updateHandler.Handle(command);
 

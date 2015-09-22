@@ -28,12 +28,15 @@ namespace CQRS.Talk.Refactoring2.Commands._5.Mediator
 
         public TResult Request<TResult>(IQuery<TResult> query)
         {
-            var handlerType =
-                typeof(IQueryHandler<,>).MakeGenericType(query.GetType(), typeof(TResult));
+            var queryHandlerType = typeof(IQueryHandler<,>);
+
+            var resultType = typeof(TResult);
+
+            var handlerType = queryHandlerType.MakeGenericType(query.GetType(), resultType);
 
             dynamic handler = container.GetInstance(handlerType);
 
-            return handler.Handle((dynamic)query);
+            return handler.Handle(query);
         }
 
 

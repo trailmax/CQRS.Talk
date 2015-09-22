@@ -1,42 +1,53 @@
 ﻿namespace CQRS.Talk.Refactoring2.Commands._2.BasicCommands
 {
-    public class AddDelegateToSessionCommand
+    public class AddDelegateCommand
     {
-        private readonly ISessionDelegateRepository sessionDelegateRepository;
+        int CourseSessionId { get; set; }
+        int PersonId { get; set; }
+    }
+
+    public class AddDelegateCommandHandler
+    {
+        private readonly IDelegateRepository delegateRepository;
 
 
-        public AddDelegateToSessionCommand(ISessionDelegateRepository sessionDelegateRepository)
+        public AddDelegateCommandHandler(IDelegateRepository delegateRepository)
         {
-            this.sessionDelegateRepository = sessionDelegateRepository;
+            this.delegateRepository = delegateRepository;
         }
 
 
-        public void AddDelegateToSession(ISessionDelegateCreate delegateData)
+        public void Handle(AddDelegateCommand command)
         {
-            var sessionDelegate = new SessionDelegate(delegateData);
-            sessionDelegateRepository.Insert(sessionDelegate);
-            sessionDelegateRepository.Save();
+            var sessionDelegate = new SessionDelegate(command);
+            delegateRepository.Insert(sessionDelegate);
+            delegateRepository.Save();
         }
     }
 
 
-    public class UpdateDelegateFromSessionCommand
+    public class UpdateDelegateCommand
     {
-        private readonly ISessionDelegateRepository sessionDelegateRepository;
+        public int SessionDelegateId { get; set; }
+    }
+
+    public class UpdateDelegateCommandHandler
+    {
+        private readonly IDelegateRepository delegateRepository;
 
 
-        public UpdateDelegateFromSessionCommand(ISessionDelegateRepository sessionDelegateRepository)
+        public UpdateDelegateCommandHandler(IDelegateRepository delegateRepository)
         {
-            this.sessionDelegateRepository = sessionDelegateRepository;
+            this.delegateRepository = delegateRepository;
         }
 
 
-        public void UpdateDelegateFromSession(ISessionDelegateUpdate delegateData)
+        public void Handle(UpdateDelegateCommand command)
         {
-            var sessionDelegate = sessionDelegateRepository.Find(delegateData.SessionDelegateId);
-            sessionDelegate.Update(delegateData);
-            sessionDelegateRepository.Update(sessionDelegate);
-            sessionDelegateRepository.Save();
+            var sessionDelegate = delegateRepository.Find(command.SessionDelegateId);
+            sessionDelegate.Update(command);
+            delegateRepository.Update(sessionDelegate);
+            delegateRepository.Save();
         }
     }
 }

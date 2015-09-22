@@ -2,49 +2,49 @@
 {
     public interface ITrainingService
     {
-        void AddDelegateToSession(ISessionDelegateCreate delegateData);
-        void UpdateDelegateFromSession(ISessionDelegateUpdate delegateData);
-        void CancelDelegateFromSession(int delegateId);
-        void SessionDelegateNoShow(int sessionDelegateId);
+        void AddDelegate(ISessionDelegateCreate delegateData);
+        void UpdateDelegate(ISessionDelegateUpdate delegateData);
+        void CancelDelegate(int delegateId);
+        void DelegateNoShow(int sessionDelegateId);
     }
 
 
     public class TrainingService : ITrainingService
     {
-        private readonly ISessionDelegateRepository sessionDelegateRepository;
+        private readonly IDelegateRepository delegateRepository;
         private readonly IWorkMovementService workMovementService;
 
 
         public TrainingService(
-            ISessionDelegateRepository sessionDelegateRepository,
+            IDelegateRepository delegateRepository,
             IWorkMovementService workMovementService)
         {
-            this.sessionDelegateRepository = sessionDelegateRepository;
+            this.delegateRepository = delegateRepository;
             this.workMovementService = workMovementService;
         }
 
 
-        public void AddDelegateToSession(ISessionDelegateCreate delegateData)
+        public void AddDelegate(ISessionDelegateCreate delegateData)
         {
             var sessionDelegate = new SessionDelegate(delegateData);
-            sessionDelegateRepository.Insert(sessionDelegate);
-            sessionDelegateRepository.Save();
+            delegateRepository.Insert(sessionDelegate);
+            delegateRepository.Save();
         }
 
 
 
-        public void UpdateDelegateFromSession(ISessionDelegateUpdate delegateData)
+        public void UpdateDelegate(ISessionDelegateUpdate delegateData)
         {
-            var sessionDelegate = sessionDelegateRepository.Find(delegateData.SessionDelegateId);
+            var sessionDelegate = delegateRepository.Find(delegateData.SessionDelegateId);
             sessionDelegate.Update(delegateData);
-            sessionDelegateRepository.Update(sessionDelegate);
-            sessionDelegateRepository.Save();
+            delegateRepository.Update(sessionDelegate);
+            delegateRepository.Save();
         }
 
 
-        public void CancelDelegateFromSession(int delegateId)
+        public void CancelDelegate(int delegateId)
         {
-            var sessionDelegate = sessionDelegateRepository.Find(delegateId);
+            var sessionDelegate = delegateRepository.Find(delegateId);
 
             if (sessionDelegate == null)
             {
@@ -53,7 +53,7 @@
         }
 
 
-        public void SessionDelegateNoShow(int sessionDelegateId)
+        public void DelegateNoShow(int sessionDelegateId)
         {
             workMovementService.UpdateWorkMovementComment(sessionDelegateId, "Training session is marked as No Show");
         }

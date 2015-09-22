@@ -30,7 +30,7 @@ namespace CQRS.Talk.Sample5.CQRS.Decorator
         {
             var commandHandler = new SlowRunningCommandHandler();
             var timedDecorator = new TimedDecorator<SlowRunningCommand>(commandHandler);
-            var loggedDecorator = new LoggedDecorator<SlowRunningCommand>(timedDecorator);
+            var loggedDecorator = new LoggingDecorator<SlowRunningCommand>(timedDecorator);
 
             return loggedDecorator;
         }
@@ -43,8 +43,7 @@ namespace CQRS.Talk.Sample5.CQRS.Decorator
         public void Execute()
         {
             var command = new SlowRunningCommand("our parameter");
-            ICommandHandler<SlowRunningCommand> commandHandler = 
-                CommandHandlerFactory.CreateHandler();
+            var commandHandler = CommandHandlerFactory.CreateHandler();
 
             commandHandler.Handle(command);
         }

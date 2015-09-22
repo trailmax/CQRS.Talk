@@ -7,15 +7,15 @@ namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
 {
     #region Queries
 
-    public class StaffWithLengthOfServiceQuery : IQuery<IEnumerable<Person>>
+    public class StaffEligibleForReviewQuery : IQuery<IEnumerable<Person>>
     {
         public int NumberOfYears { get; set; }
         public bool IsNewPensionScheme { get; set; }
     }
-    public class StaffWithLengthOfServiceQueryHandler : 
-        IQueryHandler<StaffWithLengthOfServiceQuery, IEnumerable<Person>>
+    public class StaffEligibleForReviewQueryHandler : 
+        IQueryHandler<StaffEligibleForReviewQuery, IEnumerable<Person>>
     {
-        public IEnumerable<Person> Handle(StaffWithLengthOfServiceQuery query)
+        public IEnumerable<Person> Handle(StaffEligibleForReviewQuery query)
         {
             throw new NotImplementedException();
         }
@@ -55,7 +55,7 @@ namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
 
         public ActionResult EligibleForReview()
         {
-            var people = mediator.Handle(new StaffWithLengthOfServiceQuery());
+            var people = mediator.Handle(new StaffEligibleForReviewQuery());
 
             return View(people);
         }
