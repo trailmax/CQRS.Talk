@@ -16,27 +16,15 @@ namespace CQRS.Talk.Refactoring2.Commands._1.Service
     public class TrainingService : ITrainingService
     {
         private readonly ISessionDelegateRepository sessionDelegateRepository;
-        private readonly IMovementTypeRepository movementTypeRepository;
-        private readonly ICourseSessionRepository sessionRepository;
-        private readonly IPersonRepository personRepository;
-        private readonly ITrainingCourseAccommodationBookingRepository accommodationBookingRepository;
         private readonly IWorkMovementService workMovementService;
 
 
         public TrainingService(
             ISessionDelegateRepository sessionDelegateRepository,
-            IMovementTypeRepository movementTypeRepository,
-            ICourseSessionRepository sessionRepository,
-            IPersonRepository personRepository,
-            IWorkMovementService workMovementService,
-            ITrainingCourseAccommodationBookingRepository accommodationBookingRepository)
+            IWorkMovementService workMovementService)
         {
             this.sessionDelegateRepository = sessionDelegateRepository;
-            this.movementTypeRepository = movementTypeRepository;
-            this.sessionRepository = sessionRepository;
-            this.personRepository = personRepository;
             this.workMovementService = workMovementService;
-            this.accommodationBookingRepository = accommodationBookingRepository;
         }
 
 
@@ -45,25 +33,8 @@ namespace CQRS.Talk.Refactoring2.Commands._1.Service
             var sessionDelegate = new SessionDelegate(delegateData);
             sessionDelegateRepository.Insert(sessionDelegate);
             sessionDelegateRepository.Save();
-
-            var createWorkMovementCommand = this.CreateWorkMovementCommand(delegateData, sessionDelegate);
-
-            workMovementService.CreateWorkMovement(createWorkMovementCommand);
         }
 
-
-        private CreateWorkMovementCommand CreateWorkMovementCommand(ISessionDelegateCreate delegateData, SessionDelegate sessionDelegate)
-        {
-            var session = sessionRepository.All.FirstOrDefault(s => s.CourseSessionId == delegateData.CourseSessionId);
-            var person = personRepository.Find(delegateData.PersonId);
-            var movementType = movementTypeRepository.All.FirstOrDefault(t => t.Name == "Training");
-
-            var createWorkMovementCommand = new CreateWorkMovementCommand()
-            {
-                // do some mapping
-            };
-            return createWorkMovementCommand;
-        }
 
 
         public void UpdateDelegateFromSession(ISessionDelegateUpdate delegateData)
@@ -72,9 +43,6 @@ namespace CQRS.Talk.Refactoring2.Commands._1.Service
             sessionDelegate.Update(delegateData);
             sessionDelegateRepository.Update(sessionDelegate);
             sessionDelegateRepository.Save();
-
-            var createWorkMovementCommand = this.CreateWorkMovementCommand(delegateData, sessionDelegate);
-            workMovementService.CreateWorkMovement(createWorkMovementCommand);
         }
 
 
@@ -86,31 +54,12 @@ namespace CQRS.Talk.Refactoring2.Commands._1.Service
             {
                 return;
             }
-
-            workMovementService.DeleteTrainingMovement(sessionDelegate.SessionDelegateId);
-
-            // remove booked accommodation
-            var accommodationBooking = accommodationBookingRepository.All.FirstOrDefault(b => b.SessionDelegateId == sessionDelegate.SessionDelegateId);
-            if (accommodationBooking != null)
-            {
-                accommodationBookingRepository.Delete(accommodationBooking.TrainingCourseAccommodationBookingId);
-            }
         }
 
 
         public void SessionDelegateNoShow(int sessionDelegateId)
         {
             workMovementService.UpdateWorkMovementComment(sessionDelegateId, "Training session is marked as No Show");
-
-            // update accommodation booking note
-            var accommodationBooking = accommodationBookingRepository.All.FirstOrDefault(b => b.SessionDelegateId == sessionDelegateId);
-            if (accommodationBooking != null)
-            {
-                accommodationBooking.Notes = String.Format("{0}{1}{1}{2}", "Session Delegate is marked as No Show",
-                                                           Environment.NewLine, accommodationBooking.Notes);
-                accommodationBookingRepository.Update(accommodationBooking);
-                accommodationBookingRepository.Save();
-            }
         }
     }
 }
