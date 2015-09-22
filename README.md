@@ -2,7 +2,7 @@
 This repository contains the code samples related to the CQRS talk I'm presenting.
 
 
-Slides are available in this [repository as well](https://github.com/trailmax/CQRS.Talk/blob/master/CQRS.pptx)
+Slides are available in this [repository as well](https://github.com/trailmax/CQRS.Talk/raw/master/CQRS.pptx)
 
 Links and references: 
 
