@@ -2,15 +2,15 @@
 {
     interface IMagicService
     {
-        int DoSomeMagic(float numberOfTrolls);
+        int MagicMethod(float numberOfTrolls);
     }
 
 
     class MagicService : IMagicService
     {
-        public int DoSomeMagic(float numberOfTrolls)
+        public int MagicMethod(float numberOfTrolls)
         {
-            return 4;
+            return 4; // random according to XKCD
         }
     }
 
@@ -29,7 +29,7 @@
         public void SomeAction()
         {
             // ...
-            var magicNumber = magicService.DoSomeMagic(7);
+            var magicNumber = magicService.MagicMethod(7);
 			//..
         }
     }

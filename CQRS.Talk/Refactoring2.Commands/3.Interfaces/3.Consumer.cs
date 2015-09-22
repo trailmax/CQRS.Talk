@@ -6,8 +6,10 @@ namespace CQRS.Talk.Refactoring2.Commands._3.Interfaces
     class ServiceConsumer : Controller
     {
 		//OMG!!!! LOOK AT THIS AGAIN!!!
-        private readonly ICommandHandler<AddDelegateToSessionCommand> addDelegateCommandHandler;
-        private readonly ICommandHandler<UpdateDelegateFromSessionCommand> updateDelegateCommandHandler;
+        private readonly ICommandHandler<AddDelegateToSessionCommand> 
+            addDelegateCommandHandler;
+        private readonly ICommandHandler<UpdateDelegateFromSessionCommand> 
+            updateDelegateCommandHandler;
 
 
         public ServiceConsumer(

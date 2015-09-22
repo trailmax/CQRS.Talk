@@ -13,7 +13,8 @@ namespace CQRS.Talk.Refactoring2.Commands._4.Validators
     }
 
 
-	public class AddDelegateToSessionCommandValidator : ICommandValidator<AddDelegateToSessionCommand>
+	public class AddDelegateToSessionCommandValidator : 
+        ICommandValidator<AddDelegateToSessionCommand>
 	{
 	    private readonly Database database;
 

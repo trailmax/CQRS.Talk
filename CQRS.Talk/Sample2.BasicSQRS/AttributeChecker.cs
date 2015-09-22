@@ -33,22 +33,22 @@ namespace CQRS.Talk.Sample2.BasicSQRS
 
     public class Consumer
     {
-        private readonly CheckAttributeQuery attributeQuery;
-        private readonly SetAttributeCommand setAttributeCommand;
+        private readonly CheckAttributeQuery query;
+        private readonly SetAttributeCommand command;
 
         // injecting command and query dependencies
-        public Consumer(CheckAttributeQuery attributeQuery, SetAttributeCommand setAttributeCommand)
+        public Consumer(CheckAttributeQuery query, SetAttributeCommand command)
         {
-            this.attributeQuery = attributeQuery;
-            this.setAttributeCommand = setAttributeCommand;
+            this.query = query;
+            this.command = command;
         }
 
 
         public void SomeOperation()
         {
-            if (attributeQuery.AttributeExists("PersonName"))
+            if (query.AttributeExists("PersonName"))
             {
-                setAttributeCommand.SetAttribute("PersonName", "Rover, Curiousity");
+                command.SetAttribute("PersonName", "Rover, Curiousity");
             }
         }
     }

@@ -15,11 +15,11 @@ namespace CQRS.Talk.Sample4.Decorator
         }
 
 
-        public int DoSomeMagic(float numberOfTrolls)
+        public int MagicMethod(float numberOfTrolls)
         {
             Logger.Info("Starting doing Some Magic, Number of trolls: {0}", numberOfTrolls);
 
-            var result = decorated.DoSomeMagic(numberOfTrolls);
+            var result = decorated.MagicMethod(numberOfTrolls);
 
             Logger.Info("Finished doing Some Magic");
 

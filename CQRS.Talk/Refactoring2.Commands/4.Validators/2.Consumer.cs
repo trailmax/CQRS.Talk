@@ -8,11 +8,15 @@ namespace CQRS.Talk.Refactoring2.Commands._4.Validators
     class ServiceConsumer : Controller
     {
 		//I'm so tired of typing!
-        private readonly ICommandHandler<AddDelegateToSessionCommand> addDelegateCommandHandler;
-        private readonly ICommandValidator<AddDelegateToSessionCommand> addDelegateCommandValidator;
+        private readonly ICommandHandler<AddDelegateToSessionCommand> 
+            addDelegateCommandHandler;
+        private readonly ICommandValidator<AddDelegateToSessionCommand> 
+            addDelegateCommandValidator;
 
-        private readonly ICommandHandler<UpdateDelegateFromSessionCommand> updateDelegateCommandHandler;
-        private readonly ICommandValidator<UpdateDelegateFromSessionCommand> updateDelegateCommandValidator;
+        private readonly ICommandHandler<UpdateDelegateFromSessionCommand> 
+            updateDelegateCommandHandler;
+        private readonly ICommandValidator<UpdateDelegateFromSessionCommand> 
+            updateDelegateCommandValidator;
 
 
         public ServiceConsumer(ICommandHandler<AddDelegateToSessionCommand> addDelegateCommandHandler, ICommandHandler<UpdateDelegateFromSessionCommand> updateDelegateCommandHandler, ICommandValidator<AddDelegateToSessionCommand> addDelegateCommandValidator, ICommandValidator<UpdateDelegateFromSessionCommand> updateDelegateCommandValidator)

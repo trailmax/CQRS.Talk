@@ -63,7 +63,8 @@ namespace CQRS.Talk.Refactoring2.Commands._3.Interfaces
         public int PersonId { get; set; }
     }
 
-    public class UpdateDelegateFromSessionCommandHandler : ICommandHandler<UpdateDelegateFromSessionCommand>
+    public class UpdateDelegateFromSessionCommandHandler :
+        ICommandHandler<UpdateDelegateFromSessionCommand>
     {
         private readonly ISessionDelegateRepository sessionDelegateRepository;
         private readonly IWorkMovementService workMovementService;

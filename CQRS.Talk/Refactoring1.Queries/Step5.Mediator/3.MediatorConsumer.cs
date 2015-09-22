@@ -24,8 +24,13 @@ namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
 
     public class FindPersonByEmailQuery : IQuery<Person>
     {
-        public String Email { get; set; }
+        public String Email { get; private set; }
         public bool? IsCurrentlyEmployed { get; set; }
+
+        public FindPersonByEmailQuery(String email)
+        {
+            this.Email = email;
+        }
     }
     public class FindPersonByEmailQueryHandler : IQueryHandler<FindPersonByEmailQuery, Person>
     {
@@ -58,11 +63,7 @@ namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
 
         public ActionResult FindByEmail(String email)
         {
-            var query = new FindPersonByEmailQuery()
-            {
-                Email = email,
-                IsCurrentlyEmployed = true
-            };
+            var query = new FindPersonByEmailQuery(email);
             var person = mediator.Handle(query);
 
             return View(person);
