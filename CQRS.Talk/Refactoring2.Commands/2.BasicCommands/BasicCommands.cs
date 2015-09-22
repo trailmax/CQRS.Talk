@@ -1,23 +1,13 @@
-﻿using System.Linq;
-
-
-namespace CQRS.Talk.Refactoring2.Commands._2.BasicCommands
+﻿namespace CQRS.Talk.Refactoring2.Commands._2.BasicCommands
 {
     public class AddDelegateToSessionCommand
     {
         private readonly ISessionDelegateRepository sessionDelegateRepository;
-        private readonly IWorkMovementService workMovementService;
-        private readonly ICourseSessionRepository sessionRepository;
-        private readonly IPersonRepository personRepository;
-        private readonly IMovementTypeRepository movementTypeRepository;
 
-        public AddDelegateToSessionCommand(ISessionDelegateRepository sessionDelegateRepository, IWorkMovementService workMovementService, ICourseSessionRepository sessionRepository, IPersonRepository personRepository, IMovementTypeRepository movementTypeRepository)
+
+        public AddDelegateToSessionCommand(ISessionDelegateRepository sessionDelegateRepository)
         {
             this.sessionDelegateRepository = sessionDelegateRepository;
-            this.workMovementService = workMovementService;
-            this.sessionRepository = sessionRepository;
-            this.personRepository = personRepository;
-            this.movementTypeRepository = movementTypeRepository;
         }
 
 
@@ -26,24 +16,6 @@ namespace CQRS.Talk.Refactoring2.Commands._2.BasicCommands
             var sessionDelegate = new SessionDelegate(delegateData);
             sessionDelegateRepository.Insert(sessionDelegate);
             sessionDelegateRepository.Save();
-
-            var createWorkMovementCommand = CreateWorkMovementCommand(delegateData, sessionDelegate);
-
-            workMovementService.CreateWorkMovement(createWorkMovementCommand);
-        }
-
-
-        private CreateWorkMovementCommand CreateWorkMovementCommand(ISessionDelegateCreate delegateData, SessionDelegate sessionDelegate)
-        {
-            var session = sessionRepository.All.FirstOrDefault(s => s.CourseSessionId == delegateData.CourseSessionId);
-            var person = personRepository.Find(delegateData.PersonId);
-            var movementType = movementTypeRepository.All.FirstOrDefault(t => t.Name == "Training");
-
-            var createWorkMovementCommand = new CreateWorkMovementCommand()
-            {
-                // do some mapping
-            };
-            return createWorkMovementCommand;
         }
     }
 
@@ -51,13 +23,11 @@ namespace CQRS.Talk.Refactoring2.Commands._2.BasicCommands
     public class UpdateDelegateFromSessionCommand
     {
         private readonly ISessionDelegateRepository sessionDelegateRepository;
-        private readonly IWorkMovementService workMovementService;
 
 
-        public UpdateDelegateFromSessionCommand(ISessionDelegateRepository sessionDelegateRepository, IWorkMovementService workMovementService)
+        public UpdateDelegateFromSessionCommand(ISessionDelegateRepository sessionDelegateRepository)
         {
             this.sessionDelegateRepository = sessionDelegateRepository;
-            this.workMovementService = workMovementService;
         }
 
 
@@ -67,12 +37,6 @@ namespace CQRS.Talk.Refactoring2.Commands._2.BasicCommands
             sessionDelegate.Update(delegateData);
             sessionDelegateRepository.Update(sessionDelegate);
             sessionDelegateRepository.Save();
-
-            var createWorkMovementCommand = new CreateWorkMovementCommand()
-            {
-                // do some mapping
-            };
-            workMovementService.CreateWorkMovement(createWorkMovementCommand);
         }
     }
 }

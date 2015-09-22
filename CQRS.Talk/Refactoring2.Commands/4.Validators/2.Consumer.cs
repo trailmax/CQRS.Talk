@@ -8,23 +8,22 @@ namespace CQRS.Talk.Refactoring2.Commands._4.Validators
     class ServiceConsumer : Controller
     {
 		//I'm so tired of typing!
-        private readonly ICommandHandler<AddDelegateToSessionCommand> 
-            addDelegateCommandHandler;
-        private readonly ICommandValidator<AddDelegateToSessionCommand> 
-            addDelegateCommandValidator;
-
-        private readonly ICommandHandler<UpdateDelegateFromSessionCommand> 
-            updateDelegateCommandHandler;
-        private readonly ICommandValidator<UpdateDelegateFromSessionCommand> 
-            updateDelegateCommandValidator;
+        private readonly ICommandHandler<AddDelegateToSessionCommand> addHandler;
+        private readonly ICommandValidator<AddDelegateToSessionCommand> addValidator;
+        private readonly ICommandHandler<UpdateDelegateFromSessionCommand> updateHandler;
+        private readonly ICommandValidator<UpdateDelegateFromSessionCommand> updateValidator;
 
 
-        public ServiceConsumer(ICommandHandler<AddDelegateToSessionCommand> addDelegateCommandHandler, ICommandHandler<UpdateDelegateFromSessionCommand> updateDelegateCommandHandler, ICommandValidator<AddDelegateToSessionCommand> addDelegateCommandValidator, ICommandValidator<UpdateDelegateFromSessionCommand> updateDelegateCommandValidator)
+        public ServiceConsumer(
+            ICommandHandler<AddDelegateToSessionCommand> addHandler, 
+            ICommandHandler<UpdateDelegateFromSessionCommand> updateHandler, 
+            ICommandValidator<AddDelegateToSessionCommand> addValidator, 
+            ICommandValidator<UpdateDelegateFromSessionCommand> updateValidator)
         {
-            this.addDelegateCommandHandler = addDelegateCommandHandler;
-            this.updateDelegateCommandHandler = updateDelegateCommandHandler;
-            this.addDelegateCommandValidator = addDelegateCommandValidator;
-            this.updateDelegateCommandValidator = updateDelegateCommandValidator;
+            this.addHandler = addHandler;
+            this.updateHandler = updateHandler;
+            this.addValidator = addValidator;
+            this.updateValidator = updateValidator;
         }
 
 
@@ -32,7 +31,7 @@ namespace CQRS.Talk.Refactoring2.Commands._4.Validators
         [HttpPost]
         public ActionResult AddSessionDelegate(AddDelegateToSessionCommand command)
         {
-            var errors = addDelegateCommandValidator.GetErrorList(command);
+            var errors = addValidator.GetErrorList(command);
 
             if (errors.Any())
             {
@@ -40,7 +39,7 @@ namespace CQRS.Talk.Refactoring2.Commands._4.Validators
                 return View(errors);
             }
 
-            addDelegateCommandHandler.Handle(command);
+            addHandler.Handle(command);
             return RedirectToAction("Index", "SessionDelegate");
         }
 
@@ -48,7 +47,7 @@ namespace CQRS.Talk.Refactoring2.Commands._4.Validators
         [HttpPost]
         public ActionResult CancelSessionDelegateFromSession(UpdateDelegateFromSessionCommand command)
         {
-            var errors = updateDelegateCommandValidator.GetErrorList(command);
+            var errors = updateValidator.GetErrorList(command);
 
             if (errors.Any())
             {
@@ -56,7 +55,7 @@ namespace CQRS.Talk.Refactoring2.Commands._4.Validators
                 return View(errors);
             }
 
-            updateDelegateCommandHandler.Handle(command);
+            updateHandler.Handle(command);
 
             return RedirectToAction("Index", "Session");
         }

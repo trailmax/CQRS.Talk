@@ -8,23 +8,23 @@ namespace CQRS.Talk.Refactoring1.Queries.Step4.Interfaces
     public class QueryHandlerConsumer : Controller
     {
         //WHOA!!! Hold your horses, my eyes are bleeding!!!!11!!
-        private readonly IQueryHandler<StaffWithLengthOfServiceQuery, IEnumerable<Person>> eligibleForReviewHandler;
-        private readonly IQueryHandler<FindPersonByEmailQuery, Person> findByEmailHandler;
+        private readonly IQueryHandler<StaffEligibleForReviewQuery, IEnumerable<Person>> reviewHandler;
+        private readonly IQueryHandler<FindPersonByEmailQuery, Person> emailHandler;
 
 
         public QueryHandlerConsumer(
-            IQueryHandler<StaffWithLengthOfServiceQuery, IEnumerable<Person>> eligibleForReviewHandler, 
-            IQueryHandler<FindPersonByEmailQuery, Person> findByEmailHandler)
+            IQueryHandler<StaffEligibleForReviewQuery, IEnumerable<Person>> reviewHandler, 
+            IQueryHandler<FindPersonByEmailQuery, Person> emailHandler)
         {
-            this.eligibleForReviewHandler = eligibleForReviewHandler;
-            this.findByEmailHandler = findByEmailHandler;
+            this.reviewHandler = reviewHandler;
+            this.emailHandler = emailHandler;
         }
 
 
         public ActionResult EligibleForReview()
         {
-            var people = eligibleForReviewHandler.Handle(
-                new StaffWithLengthOfServiceQuery());
+            var query = new StaffEligibleForReviewQuery();
+            var people = reviewHandler.Handle(query);
 
             return View(people);
         }
@@ -37,7 +37,7 @@ namespace CQRS.Talk.Refactoring1.Queries.Step4.Interfaces
                 Email = email,
                 IsCurrentlyEmployed = true
             };
-            var person = findByEmailHandler.Handle(query);
+            var person = emailHandler.Handle(query);
 
             return View(person);
         }

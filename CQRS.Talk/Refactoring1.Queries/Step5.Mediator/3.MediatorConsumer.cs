@@ -15,7 +15,7 @@ namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
     public class StaffWithLengthOfServiceQueryHandler : 
         IQueryHandler<StaffWithLengthOfServiceQuery, IEnumerable<Person>>
     {
-        public IEnumerable<Person> Handle(IQuery<IEnumerable<Person>> query)
+        public IEnumerable<Person> Handle(StaffWithLengthOfServiceQuery query)
         {
             throw new NotImplementedException();
         }
@@ -34,7 +34,7 @@ namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
     }
     public class FindPersonByEmailQueryHandler : IQueryHandler<FindPersonByEmailQuery, Person>
     {
-        public Person Handle(IQuery<Person> query)
+        public Person Handle(FindPersonByEmailQuery query)
         {
             throw new NotImplementedException();
         }

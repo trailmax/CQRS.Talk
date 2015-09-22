@@ -6,18 +6,16 @@ namespace CQRS.Talk.Refactoring2.Commands._3.Interfaces
     class ServiceConsumer : Controller
     {
 		//OMG!!!! LOOK AT THIS AGAIN!!!
-        private readonly ICommandHandler<AddDelegateToSessionCommand> 
-            addDelegateCommandHandler;
-        private readonly ICommandHandler<UpdateDelegateFromSessionCommand> 
-            updateDelegateCommandHandler;
+        private readonly ICommandHandler<AddDelegateToSessionCommand> addHandler;
+        private readonly ICommandHandler<UpdateDelegateFromSessionCommand> updateHandler;
 
 
         public ServiceConsumer(
-            ICommandHandler<AddDelegateToSessionCommand> addDelegateCommandHandler, 
-            ICommandHandler<UpdateDelegateFromSessionCommand> updateDelegateCommandHandler)
+            ICommandHandler<AddDelegateToSessionCommand> addHandler, 
+            ICommandHandler<UpdateDelegateFromSessionCommand> updateHandler)
         {
-            this.addDelegateCommandHandler = addDelegateCommandHandler;
-            this.updateDelegateCommandHandler = updateDelegateCommandHandler;
+            this.addHandler = addHandler;
+            this.updateHandler = updateHandler;
         }
 
 
@@ -25,7 +23,7 @@ namespace CQRS.Talk.Refactoring2.Commands._3.Interfaces
         [HttpPost]
         public ActionResult AddSessionDelegate(AddDelegateToSessionCommand command)
         {
-            addDelegateCommandHandler.Handle(command);
+            addHandler.Handle(command);
 
             return RedirectToAction("Index", "SessionDelegate");
         }
@@ -34,7 +32,7 @@ namespace CQRS.Talk.Refactoring2.Commands._3.Interfaces
         [HttpPost]
         public ActionResult CancelSessionDelegateFromSession(UpdateDelegateFromSessionCommand command)
         {
-            updateDelegateCommandHandler.Handle(command);
+            updateHandler.Handle(command);
 
             return RedirectToAction("Index", "Session");
         }

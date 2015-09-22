@@ -6,30 +6,28 @@ using PetaPoco;
 
 namespace CQRS.Talk.Refactoring1.Queries.Step4.Interfaces
 {
-    public class StaffWithLengthOfServiceQuery
+    public class StaffEligibleForReviewQuery
     {
-        public int NumberOfYears { get; set; }
-        public bool IsNewPensionScheme { get; set; }
     }
 
-    public class StaffWithLengthOfServiceQueryHandler : 
-        IQueryHandler<StaffWithLengthOfServiceQuery, IEnumerable<Person>>
+    public class StaffEligibleForReviewQueryHandler : 
+        IQueryHandler<StaffEligibleForReviewQuery, IEnumerable<Person>>
     {
         private readonly PetaPoco.Database database;
-        public StaffWithLengthOfServiceQueryHandler(Database database)
+        public StaffEligibleForReviewQueryHandler(Database database)
         {
             this.database = database;
         }
 
 
-        public IEnumerable<Person> Handle(StaffWithLengthOfServiceQuery query)
+        public IEnumerable<Person> Handle(StaffEligibleForReviewQuery query)
         {
             const string sql = @"where 
-                                    isCurrentlyEmployed = 1 and 
-                                    datediff(Year, DateOfJoin, GetDate()) >= @0 
-                                    and isNewPensionScheme = @1";
+                                    isCurrentlyEmployed = 1 
+                                    and datediff(Year, DateOfJoin, GetDate()) >= 3 
+                                    and isNewPensionScheme = 1";
 
-            var people = database.Query<Person>(sql, query.NumberOfYears, query.IsNewPensionScheme);
+            var people = database.Query<Person>(sql);
 
             return people;
         }

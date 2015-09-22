@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-
-
-namespace CQRS.Talk.Refactoring2.Commands._1.Service
+﻿namespace CQRS.Talk.Refactoring2.Commands._1.Service
 {
     public interface ITrainingService
     {

@@ -1,4 +1,7 @@
 ﻿// ReSharper disable SuspiciousTypeConversion.Global
+// ReSharper disable ExpressionIsAlwaysNull
+// ReSharper disable ConditionIsAlwaysTrueOrFalse
+// ReSharper disable
 using System;
 using CQRS.Talk.Refactoring1.Queries.Step5.Mediator;
 
@@ -17,7 +20,7 @@ namespace CQRS.Talk.Sample5.CQRS.Decorator.Query
         }
 
 
-        public TResult Handle(IQuery<TResult> query)
+        public TResult Handle(TQuery query)
         {
             var cachedQuery = query as ICachedQuery;
 

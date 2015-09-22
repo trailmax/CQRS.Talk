@@ -1,6 +1,6 @@
-﻿using System;
+﻿//// ReSharper disable RedundantArgumentNameForLiteralExpression
+using System;
 using CQRS.Talk.Dependencies;
-// ReSharper disable RedundantArgumentNameForLiteralExpression
 
 
 namespace CQRS.Talk.Refactoring1.Queries.Step1.Repository
@@ -18,7 +18,7 @@ namespace CQRS.Talk.Refactoring1.Queries.Step1.Repository
 
         public ActionResult EligibleForReview()
         {
-            var people = peopleRepository.GetStaffWithLengthOfServiceMoreThan();
+            var people = peopleRepository.GetStaffEligibleForReview();
 
             return View(people);
         }

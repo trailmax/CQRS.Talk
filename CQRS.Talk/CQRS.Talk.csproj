@@ -53,7 +53,6 @@
   <ItemGroup>
     <Compile Include="Dependencies\Container.cs" />
     <Compile Include="Dependencies\Controller.cs" />
-    <Compile Include="Dependencies\MyDbContext.cs" />
     <Compile Include="Dependencies\Person.cs" />
     <Compile Include="Dependencies\PetaPoco.cs" />
     <Compile Include="Program.cs" />
@@ -75,7 +74,6 @@
     <Compile Include="Refactoring2.Commands\5.Mediator\2.Consumer.cs" />
     <Compile Include="Sample1.SeparateReadsFromWrites\1.Bad.cs" />
     <Compile Include="Sample1.SeparateReadsFromWrites\2.Good.cs" />
-    <Compile Include="Extra\01.CaseOfPlusPlus\PlusPlus.cs" />
     <Compile Include="Sample2.BasicSQRS\AttributeChecker.cs" />
     <Compile Include="Sample4.Decorator\3.ConsumerFactory.cs" />
     <Compile Include="Sample5.CQRS.Decorator\3.Execute.cs" />
