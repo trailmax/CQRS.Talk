@@ -7,34 +7,35 @@ namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
 {
     #region Queries
 
-    public class StaffEligibleForReviewQuery : IQuery<IEnumerable<Person>>
+    public class StaffForReviewQuery : IQuery<IEnumerable<Person>>
     {
         public int NumberOfYears { get; set; }
         public bool IsNewPensionScheme { get; set; }
     }
-    public class StaffEligibleForReviewQueryHandler : 
-        IQueryHandler<StaffEligibleForReviewQuery, IEnumerable<Person>>
+
+    public class StaffForReviewQueryHandler : 
+        IQueryHandler<StaffForReviewQuery, IEnumerable<Person>>
     {
-        public IEnumerable<Person> Handle(StaffEligibleForReviewQuery query)
+        public IEnumerable<Person> Handle(StaffForReviewQuery query)
         {
             throw new NotImplementedException();
         }
     }
 
 
-    public class FindPersonByEmailQuery : IQuery<Person>
+    public class PersonByEmailQuery : IQuery<Person>
     {
         public String Email { get; private set; }
         public bool? IsCurrentlyEmployed { get; set; }
 
-        public FindPersonByEmailQuery(String email)
+        public PersonByEmailQuery(String email)
         {
             this.Email = email;
         }
     }
-    public class FindPersonByEmailQueryHandler : IQueryHandler<FindPersonByEmailQuery, Person>
+    public class PersonByEmailQueryHandler : IQueryHandler<PersonByEmailQuery, Person>
     {
-        public Person Handle(FindPersonByEmailQuery query)
+        public Person Handle(PersonByEmailQuery query)
         {
             throw new NotImplementedException();
         }
@@ -53,17 +54,17 @@ namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
         }
 
 
-        public ActionResult EligibleForReview()
+        public ActionResult StaffForReview()
         {
-            var people = mediator.Handle(new StaffEligibleForReviewQuery());
+            var people = mediator.Handle(new StaffForReviewQuery());
 
             return View(people);
         }
 
 
-        public ActionResult FindByEmail(String email)
+        public ActionResult PersonByEmail(String email)
         {
-            var query = new FindPersonByEmailQuery(email);
+            var query = new PersonByEmailQuery(email);
             var person = mediator.Handle(query);
 
             return View(person);

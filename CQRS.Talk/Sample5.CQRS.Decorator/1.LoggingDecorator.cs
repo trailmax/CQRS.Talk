@@ -19,13 +19,13 @@ namespace CQRS.Talk.Sample5.CQRS.Decorator
         public void Handle(TCommand command)
         {
             var serialisedData = JsonConvert.SerializeObject(command);
-            var commmandName = command.GetType().Name;
+            var commandName = command.GetType().Name;
 
-            Logger.Info("Start handler {0} with data {1}", commmandName, serialisedData);
+            Logger.Info("LOG: Start handler {0} with data {1}", commandName, serialisedData);
 
             decorated.Handle(command);
 
-            Logger.Info("Finished with command {0}", commmandName);
+            Logger.Info("LOG: Finished with command {0}", commandName);
         }
     }
 }

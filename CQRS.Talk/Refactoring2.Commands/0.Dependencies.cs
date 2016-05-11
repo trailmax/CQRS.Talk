@@ -22,16 +22,14 @@ namespace CQRS.Talk.Refactoring2.Commands
 
     public class SessionDelegate
     {
-        private AddDelegateCommand command;
-
-        public SessionDelegate(ISessionDelegateCreate delegateData)
+        public SessionDelegate(DelegateData delegateData)
         {
             throw new NotImplementedException();
         }
 
         public SessionDelegate(AddDelegateCommand command)
         {
-            this.command = command;
+            throw new NotImplementedException();
         }
 
 
@@ -41,11 +39,7 @@ namespace CQRS.Talk.Refactoring2.Commands
         }
 
 
-        public int SessionDelegateId { get; set; }
-        public int PersonId { get; set; }
-
-
-        public void Update(ISessionDelegateUpdate delegateData)
+        public void Update(DelegateData delegateData)
         {
             throw new NotImplementedException();
         }
@@ -65,55 +59,6 @@ namespace CQRS.Talk.Refactoring2.Commands
 
 
 
-    public interface IWorkMovementService
-    {
-        void UpdateWorkMovementComment(int sessionDelegateId, string trainingSessionIsMarkedAsNoShow);
-        void DeleteTrainingMovement(object sessionDelegateId);
-        void CreateWorkMovement(CreateWorkMovementCommand createWorkMovementCommand);
-    }
-
-    public class TrainingCourseAccommodationBooking
-    {
-        public int SessionDelegateId { get; set; }
-        public int TrainingCourseAccommodationBookingId { get; set; }
-        public string Notes { get; set; }
-    }
-
-    public interface ITrainingCourseAccommodationBookingRepository
-    {
-        void Save();
-        void Update(object accommodationBooking);
-        IEnumerable<TrainingCourseAccommodationBooking> All { get; }
-        void Delete(int trainingCourseAccommodationBookingId);
-    }
-
-
-    public interface IPersonRepository
-    {
-        SessionDelegate Find(int personId);
-    }
-
-
-    public class CourseSession
-    {
-        public int CourseSessionId { get; set; }
-        public DateTime Start { get; set; }
-        public DateTime End { get; set; }
-    }
-
-    public interface ICourseSessionRepository
-    {
-        IEnumerable<CourseSession> All { get; set; }
-    }
-
-
-    public interface IMovementTypeRepository
-    {
-        IEnumerable<MovementType> All { get; }
-    }
-    public class MovementType {
-        public String Name { get; set; }
-    }
 
 
 
@@ -125,19 +70,15 @@ namespace CQRS.Talk.Refactoring2.Commands
         void Update(SessionDelegate sessionDelegate);
     }
 
-    public interface ISessionDelegateUpdate : ISessionDelegateCreate
+
+    public class DelegateData
     {
-        int SessionDelegateId { get; set; }
+        public int SessionDelegateId { get; set; }
+        public int CourseSessionId { get; set; }
+        public int PersonId { get; set; }
     }
 
-
-    public interface ISessionDelegateCreate
-    {
-        int CourseSessionId { get; set; }
-        int PersonId { get; set; }
-    }
-
-    public class SessionDelegateCreate : ISessionDelegateCreate
+    public class SessionDelegateCreate : DelegateData
     {
         public int CourseSessionId { get; set; }
         public int PersonId { get; set; }

@@ -24,8 +24,11 @@ namespace CQRS.Talk.Sample5.CQRS.Decorator
 
             stopwatch.Stop();
 
-            Logger.Info("Command of type {0} finished execution in {1}ms", 
-                command.GetType().Name, stopwatch.ElapsedMilliseconds);
+            if (stopwatch.ElapsedMilliseconds > 1000)
+            {
+                Logger.Info("TIMED: Command of type {0} finished execution in {1}ms", 
+                    command.GetType().Name, stopwatch.ElapsedMilliseconds);
+            }
         }
     }
 }

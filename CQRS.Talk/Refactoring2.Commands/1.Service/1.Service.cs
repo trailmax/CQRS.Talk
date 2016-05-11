@@ -2,8 +2,8 @@
 {
     public interface ITrainingService
     {
-        void AddDelegate(ISessionDelegateCreate delegateData);
-        void UpdateDelegate(ISessionDelegateUpdate delegateData);
+        void AddDelegate(DelegateData delegateData);
+        void UpdateDelegate(DelegateData delegateData);
         void CancelDelegate(int delegateId);
         void DelegateNoShow(int sessionDelegateId);
     }
@@ -12,19 +12,15 @@
     public class TrainingService : ITrainingService
     {
         private readonly IDelegateRepository delegateRepository;
-        private readonly IWorkMovementService workMovementService;
 
 
-        public TrainingService(
-            IDelegateRepository delegateRepository,
-            IWorkMovementService workMovementService)
+        public TrainingService(IDelegateRepository delegateRepository)
         {
             this.delegateRepository = delegateRepository;
-            this.workMovementService = workMovementService;
         }
 
 
-        public void AddDelegate(ISessionDelegateCreate delegateData)
+        public void AddDelegate(DelegateData delegateData)
         {
             var sessionDelegate = new SessionDelegate(delegateData);
             delegateRepository.Insert(sessionDelegate);
@@ -33,7 +29,7 @@
 
 
 
-        public void UpdateDelegate(ISessionDelegateUpdate delegateData)
+        public void UpdateDelegate(DelegateData delegateData)
         {
             var sessionDelegate = delegateRepository.Find(delegateData.SessionDelegateId);
             sessionDelegate.Update(delegateData);
@@ -44,18 +40,13 @@
 
         public void CancelDelegate(int delegateId)
         {
-            var sessionDelegate = delegateRepository.Find(delegateId);
-
-            if (sessionDelegate == null)
-            {
-                return;
-            }
+            // implementation
         }
 
 
         public void DelegateNoShow(int sessionDelegateId)
         {
-            workMovementService.UpdateWorkMovementComment(sessionDelegateId, "Training session is marked as No Show");
+            // implementation
         }
     }
 }

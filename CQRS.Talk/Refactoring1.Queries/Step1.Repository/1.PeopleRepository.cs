@@ -11,6 +11,7 @@ namespace CQRS.Talk.Refactoring1.Queries.Step1.Repository
         Person Find(Guid personId);
         void Insert(Person newPerson);
         void Update(Person person);
+
         IEnumerable<Person> GetStaffEligibleForReview();
 
         Person FindPersonByEmail(String email, bool? isCurrentlyEmployed = null);

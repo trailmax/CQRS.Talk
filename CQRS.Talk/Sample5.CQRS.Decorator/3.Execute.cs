@@ -8,44 +8,52 @@ namespace CQRS.Talk.Sample5.CQRS.Decorator
 {
     public class SlowRunningCommand : ICommand
     {
-        public string SomeParameter { get; }
+        public int Delay { get; }
 
-        public SlowRunningCommand(String someParameter)
+        public SlowRunningCommand(int delay)
         {
-            this.SomeParameter = someParameter;
+            this.Delay = delay;
         }
     }
     public class SlowRunningCommandHandler : ICommandHandler<SlowRunningCommand>
     {
         public void Handle(SlowRunningCommand command)
         {
-            Thread.Sleep(1234);
+            Console.WriteLine($"COMMAND: Delaying for {command.Delay}");
+            Thread.Sleep(command.Delay);
         }
     }
 
-
-    class CommandHandlerFactory
-    {
-        public static ICommandHandler<SlowRunningCommand> CreateHandler()
-        {
-            var commandHandler = new SlowRunningCommandHandler();
-            var timedDecorator = new TimedDecorator<SlowRunningCommand>(commandHandler);
-            var loggedDecorator = new LoggingDecorator<SlowRunningCommand>(timedDecorator);
-
-            return loggedDecorator;
-        }
-    }
 
 
     class ExecuteSample
     {
         [Test]
-        public void Execute()
+        public void Execute_OnlyCommand()
         {
-            var command = new SlowRunningCommand("our parameter");
-            var commandHandler = CommandHandlerFactory.CreateHandler();
+            var commandHandler = new SlowRunningCommandHandler();
 
-            commandHandler.Handle(command);
+            commandHandler.Handle(new SlowRunningCommand(1234));
+        }
+
+
+        [Test]
+        public void AddLogging()
+        {
+            var commandHandler = new SlowRunningCommandHandler();
+            var loggingDecorator = new LoggingDecorator<SlowRunningCommand>(commandHandler);
+
+            loggingDecorator.Handle(new SlowRunningCommand(1234));
+        }
+
+        [Test]
+        public void MeasureTime()
+        {
+            var commandHandler = new SlowRunningCommandHandler();
+            var timedDecorator = new TimedDecorator<SlowRunningCommand>(commandHandler);
+            var loggedDecorator = new LoggingDecorator<SlowRunningCommand>(timedDecorator);
+
+            loggedDecorator.Handle(new SlowRunningCommand(1234));
         }
     }
 }
