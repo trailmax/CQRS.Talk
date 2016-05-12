@@ -1,5 +1,4 @@
-﻿//// ReSharper disable RedundantArgumentNameForLiteralExpression
-using System;
+﻿using System;
 using CQRS.Talk.Dependencies;
 
 
