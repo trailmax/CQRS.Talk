@@ -19,7 +19,6 @@ namespace CQRS.Talk.Refactoring1.Queries.Step4.Interfaces
             this.database = database;
         }
 
-
         public IEnumerable<Person> Handle(StaffForReviewQuery query)
         {
             const string sql = @"where 

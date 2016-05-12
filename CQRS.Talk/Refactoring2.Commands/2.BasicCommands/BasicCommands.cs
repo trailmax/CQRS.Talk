@@ -4,6 +4,7 @@
     {
         int CourseSessionId { get; set; }
         int PersonId { get; set; }
+        // other data
     }
 
     public class AddDelegateCommandHandler
@@ -29,6 +30,7 @@
     public class UpdateDelegateCommand
     {
         public int SessionDelegateId { get; set; }
+        // other data
     }
 
     public class UpdateDelegateCommandHandler

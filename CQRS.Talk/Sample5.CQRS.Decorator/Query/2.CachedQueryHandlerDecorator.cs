@@ -3,7 +3,7 @@
 // ReSharper disable ConditionIsAlwaysTrueOrFalse
 // ReSharper disable
 using System;
-using CQRS.Talk.Refactoring1.Queries.Step5.Mediator;
+using CQRS.Talk.Refactoring1.Queries.Step4.Interfaces;
 
 
 namespace CQRS.Talk.Sample5.CQRS.Decorator.Query

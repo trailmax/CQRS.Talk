@@ -5,7 +5,6 @@
         void AddDelegate(DelegateData delegateData);
         void UpdateDelegate(DelegateData delegateData);
         void CancelDelegate(int delegateId);
-        void DelegateNoShow(int sessionDelegateId);
     }
 
 
@@ -39,12 +38,6 @@
 
 
         public void CancelDelegate(int delegateId)
-        {
-            // implementation
-        }
-
-
-        public void DelegateNoShow(int sessionDelegateId)
         {
             // implementation
         }

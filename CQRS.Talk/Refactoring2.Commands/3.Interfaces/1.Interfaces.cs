@@ -5,7 +5,7 @@
     }
 
 
-    public interface ICommandHandler<in TCommand> where TCommand : ICommand
+    public interface ICommandHandler<TCommand> where TCommand : ICommand
     {
         void Handle(TCommand command);
     }

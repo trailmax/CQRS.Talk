@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CQRS.Talk.Dependencies;
+using CQRS.Talk.Refactoring1.Queries.Step4.Interfaces;
 using CQRS.Talk.Refactoring1.Queries.Step5.Mediator;
 using CQRS.Talk.Refactoring2.Commands._3.Interfaces;
 using CQRS.Talk.Refactoring2.Commands._4.Validators;
