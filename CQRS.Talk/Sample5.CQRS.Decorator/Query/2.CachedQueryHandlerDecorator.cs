@@ -8,7 +8,8 @@ using CQRS.Talk.Refactoring1.Queries.Step4.Interfaces;
 
 namespace CQRS.Talk.Sample5.CQRS.Decorator.Query
 {
-    public class CachedQueryHandlerDecorator<TQuery, TResult> : IQueryHandler<TQuery, TResult> where TQuery : IQuery<TResult>
+    public class CachedQueryHandlerDecorator<TQuery, TResult> : 
+        IQueryHandler<TQuery, TResult> where TQuery : IQuery<TResult>
     {
         private readonly IQueryHandler<TQuery, TResult> decorated;
         private readonly ICacheProvider cacheProvider;

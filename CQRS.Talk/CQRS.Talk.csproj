@@ -80,6 +80,9 @@
     <Compile Include="Sample5.CQRS.Decorator\2.TimedDecorator.cs" />
     <Compile Include="Sample5.CQRS.Decorator\Query\2.CachedQueryHandlerDecorator.cs" />
     <Compile Include="Sample5.CQRS.Decorator\Query\1.ICachedQuery.cs" />
+    <Compile Include="Sample5.CQRS.Decorator\Query\CacheProvider.cs" />
+    <Compile Include="Sample5.CQRS.Decorator\Query\QueryWithCache.cs" />
+    <Compile Include="Sample5.CQRS.Decorator\Query\TimedQueryDecorator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
