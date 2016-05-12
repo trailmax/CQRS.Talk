@@ -36,6 +36,7 @@ namespace CQRS.Talk.Sample5.CQRS.Decorator.Query
             Console.WriteLine($"First execution result: {result}");
             Console.WriteLine();
 
+            // execute second time
             var cachedResult = timedHanndler.Handle(query);
             Console.WriteLine($"Cached execution: {cachedResult}");
         }
