@@ -6,7 +6,7 @@ using PetaPoco;
 
 namespace CQRS.Talk.Refactoring1.Queries.Step4.Interfaces
 {
-    public class StaffForReviewQuery
+    public class StaffForReviewQuery : IQuery<IEnumerable<Person>>
     {
     }
 
@@ -34,7 +34,7 @@ namespace CQRS.Talk.Refactoring1.Queries.Step4.Interfaces
     }
 
 
-    public class PersonByEmailQuery
+    public class PersonByEmailQuery : IQuery<Person>
     {
         public String Email { get; set; }
         public bool? IsCurrentlyEmployed { get; set; }

@@ -63,8 +63,7 @@
     <Compile Include="Refactoring1.Queries\Step1.Repository\1.PeopleRepository.cs" />
     <Compile Include="Refactoring1.Queries\Step1.Repository\2.PeopleRepositoryConsumer.cs" />
     <Compile Include="Refactoring1.Queries\Step4.Interfaces\3.QueryHandlerConsumer.cs" />
-    <Compile Include="Refactoring1.Queries\Step5.Mediator\1.Interfaces.cs" />
-    <Compile Include="Refactoring1.Queries\Step5.Mediator\3.MediatorConsumer.cs" />
+    <Compile Include="Refactoring1.Queries\Step5.Mediator\2.MediatorConsumer.cs" />
     <Compile Include="Refactoring2.Commands\0.Dependencies.cs" />
     <Compile Include="Refactoring2.Commands\1.Service\1.Service.cs" />
     <Compile Include="Refactoring2.Commands\2.BasicCommands\BasicCommands.cs" />
@@ -84,8 +83,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <Compile Include="Refactoring1.Queries\Step4.Interfaces\1.IQueryHandler.cs" />
-    <Compile Include="Refactoring1.Queries\Step5.Mediator\2.Mediator.cs" />
+    <Compile Include="Refactoring1.Queries\Step4.Interfaces\1.Interfaces.cs" />
+    <Compile Include="Refactoring1.Queries\Step5.Mediator\1.Mediator.cs" />
     <Compile Include="Refactoring2.Commands\1.Service\2.ServiceConsumer.cs" />
     <Compile Include="Refactoring2.Commands\3.Interfaces\1.Interfaces.cs" />
     <Compile Include="Refactoring2.Commands\3.Interfaces\3.Consumer.cs" />

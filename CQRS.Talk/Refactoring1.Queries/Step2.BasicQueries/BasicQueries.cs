@@ -8,7 +8,7 @@ namespace CQRS.Talk.Refactoring1.Queries.Step2.BasicQueries
 {
     public class StaffEligibleForReviewQuery
     {
-        private readonly PetaPoco.Database database;
+        private readonly Database database;
 
 
         public StaffEligibleForReviewQuery(Database database)
@@ -32,7 +32,7 @@ namespace CQRS.Talk.Refactoring1.Queries.Step2.BasicQueries
 
     public class FindPersonByEmailQuery
     {
-        private readonly PetaPoco.Database database;
+        private readonly Database database;
         public FindPersonByEmailQuery(Database database)
         {
             this.database = database;

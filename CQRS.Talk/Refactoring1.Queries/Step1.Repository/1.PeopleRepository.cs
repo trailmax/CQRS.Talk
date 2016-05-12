@@ -20,9 +20,9 @@ namespace CQRS.Talk.Refactoring1.Queries.Step1.Repository
 
     public class PeopleRepository : IPeopleRepository
     {
-        private readonly PetaPoco.Database database;
+        private readonly Database database;
 
-        public PeopleRepository(PetaPoco.Database database)
+        public PeopleRepository(Database database)
         {
             this.database = database;
         }

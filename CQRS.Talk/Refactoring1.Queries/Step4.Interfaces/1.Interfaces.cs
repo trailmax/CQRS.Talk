@@ -1,4 +1,4 @@
-﻿namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
+﻿namespace CQRS.Talk.Refactoring1.Queries.Step4.Interfaces
 {
     public interface IQuery<TResult>
     {
