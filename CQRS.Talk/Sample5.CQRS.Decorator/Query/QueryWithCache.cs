@@ -29,15 +29,15 @@ namespace CQRS.Talk.Sample5.CQRS.Decorator.Query
             var query = new QueryWithCache();
             var handler = new QueryWithCacheHandler();
             var cachedHandler = new CachedQueryHandlerDecorator<QueryWithCache, String>(handler, new CacheProvider());
-            var timedHanndler = new TimedQueryDecorator<QueryWithCache, String>(cachedHandler);
+            var timedHandler = new TimedQueryDecorator<QueryWithCache, String>(cachedHandler);
 
             // Execute
-            var result = timedHanndler.Handle(query);
+            var result = timedHandler.Handle(query);
             Console.WriteLine($"First execution result: {result}");
             Console.WriteLine();
 
             // execute second time
-            var cachedResult = timedHanndler.Handle(query);
+            var cachedResult = timedHandler.Handle(query);
             Console.WriteLine($"Cached execution: {cachedResult}");
         }
     }
