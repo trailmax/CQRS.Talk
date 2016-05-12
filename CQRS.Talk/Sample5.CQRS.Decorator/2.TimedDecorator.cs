@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
+using CQRS.Talk.Dependencies;
 using CQRS.Talk.Refactoring2.Commands._3.Interfaces;
-using CQRS.Talk.Sample4.Decorator;
 
 
 namespace CQRS.Talk.Sample5.CQRS.Decorator

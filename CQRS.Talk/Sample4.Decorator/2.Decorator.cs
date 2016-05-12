@@ -26,19 +26,4 @@ namespace CQRS.Talk.Sample4.Decorator
             return result;
         }
     }
-
-
-    #region Logger
-
-    static class Logger
-    {
-        public static void Info(String message, params object[] stringParams)
-        {
-            var formattedMessage = String.Format(message, stringParams);
-
-            Trace.WriteLine(formattedMessage);
-        }
-    }
-
-    #endregion
 }

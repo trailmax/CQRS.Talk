@@ -1,5 +1,5 @@
-﻿using CQRS.Talk.Refactoring2.Commands._3.Interfaces;
-using CQRS.Talk.Sample4.Decorator;
+﻿using CQRS.Talk.Dependencies;
+using CQRS.Talk.Refactoring2.Commands._3.Interfaces;
 using Newtonsoft.Json;
 
 

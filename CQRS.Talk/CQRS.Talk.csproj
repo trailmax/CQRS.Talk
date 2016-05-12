@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Dependencies\Container.cs" />
     <Compile Include="Dependencies\Controller.cs" />
+    <Compile Include="Dependencies\Logger.cs" />
     <Compile Include="Dependencies\Person.cs" />
     <Compile Include="Dependencies\PetaPoco.cs" />
     <Compile Include="Program.cs" />
@@ -74,7 +75,6 @@
     <Compile Include="Sample1.SeparateReadsFromWrites\1.Bad.cs" />
     <Compile Include="Sample1.SeparateReadsFromWrites\2.Good.cs" />
     <Compile Include="Sample2.BasicSQRS\AttributeChecker.cs" />
-    <Compile Include="Sample4.Decorator\3.ConsumerFactory.cs" />
     <Compile Include="Sample5.CQRS.Decorator\3.Execute.cs" />
     <Compile Include="Sample5.CQRS.Decorator\1.LoggingDecorator.cs" />
     <Compile Include="Sample5.CQRS.Decorator\2.TimedDecorator.cs" />
@@ -92,8 +92,6 @@
     <Compile Include="Refactoring2.Commands\3.Interfaces\1.Interfaces.cs" />
     <Compile Include="Refactoring2.Commands\3.Interfaces\3.Consumer.cs" />
     <Compile Include="Refactoring2.Commands\4.Validators\1.Validators.cs" />
-    <Compile Include="Sample4.Decorator\1.Service.cs" />
-    <Compile Include="Sample4.Decorator\2.Decorator.cs" />
     <None Include="packages.config" />
     <Compile Include="Refactoring2.Commands\4.Validators\0.Interface.cs" />
     <Compile Include="Sample1.SeparateReadsFromWrites\3.Dictionary.cs" />

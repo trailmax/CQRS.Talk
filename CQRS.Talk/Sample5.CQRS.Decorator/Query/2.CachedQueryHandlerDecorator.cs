@@ -1,8 +1,4 @@
-﻿// ReSharper disable SuspiciousTypeConversion.Global
-// ReSharper disable ExpressionIsAlwaysNull
-// ReSharper disable ConditionIsAlwaysTrueOrFalse
-// ReSharper disable
-using System;
+﻿using System;
 using CQRS.Talk.Refactoring1.Queries.Step4.Interfaces;
 
 
