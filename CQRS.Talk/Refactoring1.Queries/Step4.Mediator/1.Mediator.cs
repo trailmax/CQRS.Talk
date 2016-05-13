@@ -1,9 +1,9 @@
 ﻿// ReSharper disable TypeParameterCanBeVariant
 using CQRS.Talk.Dependencies;
-using CQRS.Talk.Refactoring1.Queries.Step4.Interfaces;
+using CQRS.Talk.Refactoring1.Queries.Step3.Interfaces;
 
 
-namespace CQRS.Talk.Refactoring1.Queries.Step5.Mediator
+namespace CQRS.Talk.Refactoring1.Queries.Step4.Mediator
 {
     public interface IMediator
     {

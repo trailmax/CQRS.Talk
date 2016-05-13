@@ -1,25 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using CQRS.Talk.Refactoring2.Commands._3.Interfaces;
 
 
 namespace CQRS.Talk.Refactoring2.Commands
 {
-    public class CreateWorkMovementCommand
-    {
-    }
-
-
-    public class DomainException : Exception
-    {
-        public DomainException(string movementTypeTrainingIsNotFoundPleaseCreateIt)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-
-
     public class SessionDelegate
     {
         public SessionDelegate(DelegateData delegateData)
@@ -88,5 +72,4 @@ namespace CQRS.Talk.Refactoring2.Commands
     public class HttpPostAttribute : Attribute
     {
     }
-
 }

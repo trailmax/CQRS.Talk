@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using CQRS.Talk.Dependencies;
 
 
-namespace CQRS.Talk.Refactoring1.Queries.Step4.Interfaces
+namespace CQRS.Talk.Refactoring1.Queries.Step3.Interfaces
 {
     public class QueryHandlerConsumer : Controller
     {

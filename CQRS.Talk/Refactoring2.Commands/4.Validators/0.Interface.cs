@@ -1,5 +1,4 @@
-﻿// ReSharper disable TypeParameterCanBeVariant
-using System;
+﻿using System;
 using System.Collections.Generic;
 using CQRS.Talk.Refactoring2.Commands._3.Interfaces;
 

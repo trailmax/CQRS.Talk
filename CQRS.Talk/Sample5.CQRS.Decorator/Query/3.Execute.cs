@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading;
-using CQRS.Talk.Refactoring1.Queries.Step4.Interfaces;
+using CQRS.Talk.Refactoring1.Queries.Step3.Interfaces;
 using NUnit.Framework;
 
 namespace CQRS.Talk.Sample5.CQRS.Decorator.Query

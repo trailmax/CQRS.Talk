@@ -59,12 +59,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Refactoring1.Queries\Step2.BasicQueries\BasicQueries.cs" />
-    <Compile Include="Refactoring1.Queries\Step3.CommonPattern\CommonPattern.cs" />
-    <Compile Include="Refactoring1.Queries\Step4.Interfaces\2.QueryHandlersImpl.cs" />
+    <Compile Include="Refactoring1.Queries\Step3.Interfaces\2.QueryHandlersImpl.cs" />
     <Compile Include="Refactoring1.Queries\Step1.Repository\1.PeopleRepository.cs" />
     <Compile Include="Refactoring1.Queries\Step1.Repository\2.PeopleRepositoryConsumer.cs" />
-    <Compile Include="Refactoring1.Queries\Step4.Interfaces\3.QueryHandlerConsumer.cs" />
-    <Compile Include="Refactoring1.Queries\Step5.Mediator\2.MediatorConsumer.cs" />
+    <Compile Include="Refactoring1.Queries\Step3.Interfaces\3.QueryHandlerConsumer.cs" />
+    <Compile Include="Refactoring1.Queries\Step4.Mediator\2.MediatorConsumer.cs" />
     <Compile Include="Refactoring2.Commands\0.Dependencies.cs" />
     <Compile Include="Refactoring2.Commands\1.Service\1.Service.cs" />
     <Compile Include="Refactoring2.Commands\2.BasicCommands\BasicCommands.cs" />
@@ -75,19 +74,19 @@
     <Compile Include="Sample1.SeparateReadsFromWrites\1.Bad.cs" />
     <Compile Include="Sample1.SeparateReadsFromWrites\2.Good.cs" />
     <Compile Include="Sample2.BasicSQRS\AttributeChecker.cs" />
-    <Compile Include="Sample5.CQRS.Decorator\3.Execute.cs" />
-    <Compile Include="Sample5.CQRS.Decorator\1.LoggingDecorator.cs" />
-    <Compile Include="Sample5.CQRS.Decorator\2.TimedDecorator.cs" />
+    <Compile Include="Sample5.CQRS.Decorator\Command\3.Execute.cs" />
+    <Compile Include="Sample5.CQRS.Decorator\Command\1.LoggingDecorator.cs" />
+    <Compile Include="Sample5.CQRS.Decorator\Command\2.TimedDecorator.cs" />
     <Compile Include="Sample5.CQRS.Decorator\Query\2.CachedQueryHandlerDecorator.cs" />
     <Compile Include="Sample5.CQRS.Decorator\Query\1.ICachedQuery.cs" />
     <Compile Include="Sample5.CQRS.Decorator\Query\CacheProvider.cs" />
-    <Compile Include="Sample5.CQRS.Decorator\Query\QueryWithCache.cs" />
+    <Compile Include="Sample5.CQRS.Decorator\Query\3.Execute.cs" />
     <Compile Include="Sample5.CQRS.Decorator\Query\TimedQueryDecorator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <Compile Include="Refactoring1.Queries\Step4.Interfaces\1.Interfaces.cs" />
-    <Compile Include="Refactoring1.Queries\Step5.Mediator\1.Mediator.cs" />
+    <Compile Include="Refactoring1.Queries\Step3.Interfaces\1.Interfaces.cs" />
+    <Compile Include="Refactoring1.Queries\Step4.Mediator\1.Mediator.cs" />
     <Compile Include="Refactoring2.Commands\1.Service\2.ServiceConsumer.cs" />
     <Compile Include="Refactoring2.Commands\3.Interfaces\1.Interfaces.cs" />
     <Compile Include="Refactoring2.Commands\3.Interfaces\3.Consumer.cs" />

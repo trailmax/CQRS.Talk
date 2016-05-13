@@ -3,6 +3,12 @@ using System.Collections.Generic;
 
 namespace CQRS.Talk.Sample5.CQRS.Decorator.Query
 {
+    public interface ICacheProvider
+    {
+        object Get(string cacheKey);
+        void Set(string cacheKey, object cachedResult, TimeSpan cacheDuration);
+    }
+
     class CacheProvider : ICacheProvider
     {
         private Dictionary<String, Object> cachedObjects;

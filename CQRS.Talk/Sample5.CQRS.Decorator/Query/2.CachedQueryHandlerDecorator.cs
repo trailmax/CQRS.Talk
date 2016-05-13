@@ -1,5 +1,5 @@
 ﻿using System;
-using CQRS.Talk.Refactoring1.Queries.Step4.Interfaces;
+using CQRS.Talk.Refactoring1.Queries.Step3.Interfaces;
 
 
 namespace CQRS.Talk.Sample5.CQRS.Decorator.Query
@@ -44,12 +44,5 @@ namespace CQRS.Talk.Sample5.CQRS.Decorator.Query
             cacheProvider.Set(cachedQuery.CacheKey, cachedResult, cachedQuery.CacheDuration);
             return cachedResult;
         }
-    }
-
-
-    public  interface ICacheProvider
-    {
-        object Get(string cacheKey);
-        void Set(string cacheKey, object cachedResult, TimeSpan cacheDuration);
     }
 }

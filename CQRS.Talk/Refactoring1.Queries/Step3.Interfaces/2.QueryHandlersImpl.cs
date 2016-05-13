@@ -4,7 +4,7 @@ using CQRS.Talk.Dependencies;
 using PetaPoco;
 
 
-namespace CQRS.Talk.Refactoring1.Queries.Step4.Interfaces
+namespace CQRS.Talk.Refactoring1.Queries.Step3.Interfaces
 {
     public class StaffForReviewQuery : IQuery<IEnumerable<Person>>
     {
